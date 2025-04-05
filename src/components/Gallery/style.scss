@@ -1,3 +1,4 @@
+/* style.scss */
 .section {
   position: relative;
   height: 100vh;
@@ -5,6 +6,7 @@
   align-items: center;
   justify-content: center;
   user-select: none;
+  overflow: hidden;
 }
 
 .bg {
@@ -18,8 +20,6 @@
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  text-align: center;
-  vertical-align: center;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -36,17 +36,34 @@ h1 {
   text-shadow: 0 0 20px white;
 }
 
+/* Responsive for tablets and mobile */
 @media (max-width: 768px) {
-  .bg {
-    background-size: contain;
-    height: 50vh;
-  }
   .section {
-    height: 80vh;
+    height: 70vh;
+  }
+  .bg {
+    background-attachment: scroll;
+    background-size: contain;
+    height: 70vh;
   }
   h1 {
     font-size: 2.5rem;
     padding: 5px;
     text-shadow: 0 0 12px white;
+  }
+}
+
+/* Responsive for small mobiles */
+@media (max-width: 480px) {
+  .section {
+    height: 60vh;
+  }
+  .bg {
+    height: 60vh;
+  }
+  h1 {
+    font-size: 2rem;
+    padding: 4px;
+    text-shadow: 0 0 8px white;
   }
 }

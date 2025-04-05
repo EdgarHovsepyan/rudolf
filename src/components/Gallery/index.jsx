@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import img_1 from "../../assets/gallery/1.jpg"
-import img_2 from "../../assets/gallery/2.jpg"
-import img_3 from "../../assets/gallery/3.jpg"
-import img_4 from "../../assets/gallery/4.jpg"
-import img_5 from "../../assets/gallery/5.jpg"
-import img_6 from "../../assets/gallery/6.jpg"
-import img_7 from "../../assets/gallery/7.jpg"
-import img_8 from "../../assets/gallery/8.jpg"
+import img_1 from '../../assets/gallery/1.jpg';
+import img_2 from '../../assets/gallery/2.jpg';
+import img_3 from '../../assets/gallery/3.jpg';
+import img_4 from '../../assets/gallery/4.jpg';
+import img_5 from '../../assets/gallery/5.jpg';
+import img_6 from '../../assets/gallery/6.jpg';
+import img_7 from '../../assets/gallery/7.jpg';
+import img_8 from '../../assets/gallery/8.jpg';
 import './style.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,32 +19,28 @@ const ParallaxScroller = () => {
 
     useEffect(() => {
         sectionsRef.current.forEach((section, i) => {
-            const bg = section.querySelector(".bg");
-
-            // Assign random images to the background
+            const bg = section.querySelector('.bg');
             bg.style.backgroundImage = `url(${images[i]})`;
 
-            if (i) {
-                bg.style.backgroundPosition = `50% ${window.innerHeight / 2}px`;
-
+            if (i === 0) {
+                bg.style.backgroundPosition = '50% 0px';
                 gsap.to(bg, {
                     backgroundPosition: `50% ${-window.innerHeight / 2}px`,
-                    ease: "none",
+                    ease: 'none',
                     scrollTrigger: {
                         trigger: section,
+                        start: 'top top',
+                        end: 'bottom top',
                         scrub: true,
                     },
                 });
             } else {
-                bg.style.backgroundPosition = "50% 0px";
-
+                bg.style.backgroundPosition = `50% ${window.innerHeight / 2}px`;
                 gsap.to(bg, {
                     backgroundPosition: `50% ${-window.innerHeight / 2}px`,
-                    ease: "none",
+                    ease: 'none',
                     scrollTrigger: {
                         trigger: section,
-                        start: "top top",
-                        end: "bottom top",
                         scrub: true,
                     },
                 });
@@ -63,11 +59,10 @@ const ParallaxScroller = () => {
         "Join Rudolf on His Musical Journey"
     ];
 
-
     return (
         <>
             {texts.map((text, index) => (
-                <div className={"section"} key={index} ref={el => sectionsRef.current[index] = el}>
+                <div className="section" key={index} ref={el => sectionsRef.current[index] = el}>
                     <div className="bg">
                         <h1>{text}</h1>
                     </div>
