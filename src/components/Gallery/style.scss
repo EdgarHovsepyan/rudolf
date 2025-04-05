@@ -1,4 +1,3 @@
-/* style.scss */
 .section {
   position: relative;
   height: 100vh;
@@ -42,8 +41,8 @@ h1 {
     height: 70vh;
   }
   .bg {
-    background-attachment: scroll;
-    background-size: contain;
+    background-attachment: scroll; /* ✅ Fix iOS Safari issue */
+    background-size: cover;        /* ✅ Ensure full image cover */
     height: 70vh;
   }
   h1 {
@@ -65,5 +64,12 @@ h1 {
     font-size: 2rem;
     padding: 4px;
     text-shadow: 0 0 8px white;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 }
