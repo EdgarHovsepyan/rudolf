@@ -39,7 +39,10 @@ h1 {
 @media (max-width: 768px) {
   .bg {
     background-size: contain;
-    height: 60vh;
+    height: 50vh;
+  }
+  .section {
+    height: 80vh;
   }
   h1 {
     font-size: 2.5rem;
