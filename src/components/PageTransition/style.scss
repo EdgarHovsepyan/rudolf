@@ -22,3 +22,26 @@
     top: 0;
   }
 }
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .transition {
+    h1 {
+      font-size: 4rem;
+      top: 25%;
+      padding: 5px;
+      text-shadow: 0 0 12px white;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .transition {
+    h1 {
+      font-size: 3rem;
+      top: 22%;
+      padding: 2px;
+      text-shadow: 0 0 8px white;
+    }
+  }
+}

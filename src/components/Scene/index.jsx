@@ -20,7 +20,7 @@ const Scene = () => {
                     <BackgroundText />
                     <Image
                         scale={isMobile ? [14, 28] : [15, 30]}
-                        position={isMobile ? [0, -10, -5] : [0, -2.5, -5]}
+                        position={isMobile ? [0, -5, -5] : [0, -2.5, -5]}
                         url="/models/photo.png"
                         transparent
                     />
