@@ -95,7 +95,7 @@ const Scene = () => {
                         onIncline={() => setDpr((d) => Math.min(tier.dprMax, d + 0.25))}
                         onFallback={() => setDpr(1)}
                     />
-                    <BackgroundText isMobile={isMobile} reduced={reduced} mouse={mouse} rtSize={tier.rt} envFile={ENV} />
+                    <BackgroundText isMobile={isMobile} reduced={reduced} mouse={mouse} rtSize={tier.rt} />
                     <Image
                         scale={isMobile ? [14, 28] : [15, 30]}
                         position={isMobile ? [0, -7, -5] : [photoX, -2.5, -5]}

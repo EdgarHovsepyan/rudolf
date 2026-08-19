@@ -38,14 +38,16 @@ const shots = [
 const GalleryPreview = () => (
     <section className="section gallery-preview" aria-labelledby="gallery-preview-title">
         <div className="container">
-            <div className="gallery-preview__head reveal">
-                <h2 id="gallery-preview-title">Со сцены</h2>
-                <Link className="arrow-link" to="/gallery">
+            <div className="gallery-preview__head">
+                <h2 id="gallery-preview-title" data-split>
+                    Со сцены
+                </h2>
+                <Link className="arrow-link reveal" to="/gallery">
                     Смотреть все фотографии
                     <FiArrowRight aria-hidden="true" />
                 </Link>
             </div>
-            <div className="gallery-preview__grid reveal">
+            <div className="gallery-preview__grid" data-stagger>
                 {shots.map((s) => (
                     <Link key={s.src} to="/gallery" className={`gallery-preview__item ${s.cls}`} aria-label="Открыть галерею">
                         <img
@@ -57,6 +59,7 @@ const GalleryPreview = () => (
                             alt={s.alt}
                             loading="lazy"
                             decoding="async"
+                            data-parallax="5"
                         />
                     </Link>
                 ))}

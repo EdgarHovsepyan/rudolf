@@ -5,14 +5,21 @@ import './style.scss';
 
 const Repertoire = () => (
     <section id="repertoire" className="section repertoire" aria-labelledby="repertoire-title">
+        <div className="stage-lights" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+        </div>
         <div className="container">
-            <div className="section-head reveal">
-                <h2 id="repertoire-title">{repertoire.title}</h2>
-                <p>{repertoire.lead}</p>
+            <div className="section-head">
+                <h2 id="repertoire-title" data-split>
+                    {repertoire.title}
+                </h2>
+                <p className="reveal">{repertoire.lead}</p>
             </div>
 
             <p className="repertoire__label reveal">В моём исполнении прозвучат хиты:</p>
-            <ul className="repertoire__lineup reveal" role="list" aria-label="Артисты, чьи песни звучат в программе">
+            <ul className="repertoire__lineup" role="list" aria-label="Артисты, чьи песни звучат в программе" data-stagger data-drift="2.5">
                 {repertoire.artists.map((name) => (
                     <li key={name}>{name}</li>
                 ))}
@@ -21,10 +28,10 @@ const Repertoire = () => (
 
             <div className="repertoire__foot reveal">
                 <div className="repertoire__classical">
-                    <h3>{repertoire.classical.title}</h3>
-                    <p>{repertoire.classical.text}</p>
-                    <Link className="arrow-link" to="/about#repertoire">
-                        {repertoire.classical.linkLabel}
+                    <h3>Три программы</h3>
+                    <p>{repertoire.summary}</p>
+                    <Link className="arrow-link" to="/repertoire">
+                        {repertoire.linkLabel}
                         <FiArrowRight aria-hidden="true" />
                     </Link>
                 </div>

@@ -5,16 +5,18 @@ import './style.scss';
 const Occasions = () => (
     <section id="occasions" className="section occasions" aria-labelledby="occasions-title">
         <div className="container occasions__grid">
-            <div className="occasions__intro reveal">
-                <h2 id="occasions-title">{occasions.title}</h2>
-                <p className="lead">{occasions.lead}</p>
-                <a className="btn btn--primary" href={contacts.whatsapp} target="_blank" rel="noopener">
+            <div className="occasions__intro">
+                <h2 id="occasions-title" data-split>
+                    {occasions.title}
+                </h2>
+                <p className="lead reveal">{occasions.lead}</p>
+                <a className="btn btn--primary reveal" href={contacts.whatsapp} target="_blank" rel="noopener">
                     <FaWhatsapp aria-hidden="true" />
                     Узнать о свободных датах
                 </a>
             </div>
 
-            <ul className="occasions__list reveal" role="list">
+            <ul className="occasions__list" role="list" data-stagger>
                 {occasions.items.map((item) => (
                     <li key={item.name} className={`occasions__item${item.featured ? ' is-featured' : ''}`}>
                         <h3>

@@ -85,39 +85,28 @@
     position: relative;
     border-radius: var(--r-lg);
     overflow: hidden;
+    aspect-ratio: 4 / 3;
     background: var(--surface);
     box-shadow: var(--shadow-soft);
+
+    img {
+      width: 100%;
+      height: 116%;
+      margin-top: -8%;
+      object-fit: cover;
+      object-position: 50% 40%;
+      will-change: transform;
+    }
 
     figcaption {
       position: absolute;
       inset: auto 0 0 0;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem 1rem;
       padding: 2.5rem 1rem 0.9rem;
       background: linear-gradient(to top, oklch(0.1 0.03 275 / 0.9), transparent);
       color: var(--ink);
       font-size: var(--fs-small);
       font-weight: 600;
     }
-  }
-
-  &__video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: var(--surface);
-  }
-
-  &__media-link {
-    color: var(--accent-soft);
-    font-weight: 500;
-    min-height: 2.5rem;
-    display: inline-flex;
-    align-items: center;
   }
 }
 

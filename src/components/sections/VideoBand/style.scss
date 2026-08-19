@@ -1,0 +1,77 @@
+.video-band {
+  position: relative;
+  height: 78vh;
+  height: 78svh;
+  min-height: 26rem;
+  overflow: hidden;
+  background: var(--bg);
+  isolation: isolate;
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    transform-origin: center;
+    will-change: transform;
+    filter: saturate(0.9) contrast(1.05);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(to top, oklch(0.1 0.03 275 / 0.92) 0%, oklch(0.1 0.03 275 / 0.35) 45%, transparent 75%),
+      linear-gradient(to bottom, oklch(0.1 0.03 275 / 0.5), transparent 30%);
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+    padding-bottom: clamp(2.5rem, 2rem + 3vw, 5rem);
+  }
+
+  &__kicker {
+    font-family: var(--font-ui);
+    font-size: var(--fs-caption);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  &__title {
+    font-size: clamp(2rem, 1.4rem + 3vw, 4rem);
+    color: var(--ink);
+    text-shadow: 0 2px 30px oklch(0.1 0.03 275 / 0.6);
+    max-width: 14ch;
+  }
+}
+
+@media (min-width: 900px) {
+  .video-band {
+    height: 92vh;
+    height: 92svh;
+
+    /* Текст по центру слева, чтобы не спорить с плавающим плеером в нижнем углу */
+    &__overlay {
+      align-items: center;
+      background:
+        linear-gradient(to right, oklch(0.1 0.03 275 / 0.78) 0%, oklch(0.1 0.03 275 / 0.35) 45%, transparent 70%),
+        linear-gradient(to top, oklch(0.1 0.03 275 / 0.6), transparent 35%);
+    }
+
+    &__copy {
+      padding-bottom: 0;
+    }
+  }
+}

@@ -5,17 +5,24 @@ import './style.scss';
 
 const Contact = () => (
     <section id="contact" className="section contact" aria-labelledby="contact-title">
+        <div className="stage-lights" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+        </div>
         <div className="container contact__inner">
-            <div className="contact__text reveal">
-                <h2 id="contact-title">{contactBlock.title}</h2>
-                <p className="lead">{contactBlock.lead}</p>
-                <p className="contact__area">
+            <div className="contact__text">
+                <h2 id="contact-title" data-split>
+                    {contactBlock.title}
+                </h2>
+                <p className="lead reveal">{contactBlock.lead}</p>
+                <p className="contact__area reveal">
                     <FiMapPin aria-hidden="true" />
                     {contactBlock.note}
                 </p>
             </div>
 
-            <div className="contact__actions reveal">
+            <div className="contact__actions" data-stagger>
                 <a className="contact__phone" href={contacts.phoneHref}>
                     <span className="contact__phone-label">Телефон</span>
                     <span className="contact__phone-number">{contacts.phoneDisplay}</span>

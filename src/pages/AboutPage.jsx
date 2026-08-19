@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { FiPhone, FiPrinter, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa6';
 import { bio, contacts, site } from '../content/site';
 import useReveal from '../hooks/useReveal';
+import useSectionMotion from '../hooks/useSectionMotion';
 import portrait1600 from '../assets/gallery/webp/1-1600.webp';
 import portrait800 from '../assets/gallery/webp/1-800.webp';
 import stage1600 from '../assets/gallery/webp/5-1600.webp';
@@ -14,7 +15,9 @@ const yearKey = (y) => (/\d{4}/.test(y) ? Number(y.match(/\d{4}/)[0]) : 9999);
 const timeline = [...bio.work, ...bio.education].sort((a, b) => yearKey(b.year) - yearKey(a.year));
 
 const AboutPage = () => {
+    const scope = useRef(null);
     useReveal();
+    useSectionMotion(scope);
     useEffect(() => {
         document.title = `Обо мне: ${bio.title}, баритон`;
         return () => {
@@ -23,11 +26,11 @@ const AboutPage = () => {
     }, []);
 
     return (
-        <article className="about-page">
+        <article className="about-page" ref={scope}>
             <header className="about-page__hero">
                 <div className="container about-page__hero-grid">
                     <div className="about-page__hero-text">
-                        <h1>{bio.title}</h1>
+                        <h1 data-split>{bio.title}</h1>
                         <p className="lead">{bio.subtitle}</p>
 
                         {/* Резюме одним взглядом: факты без рекламы */}

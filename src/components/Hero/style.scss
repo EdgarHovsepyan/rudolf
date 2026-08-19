@@ -6,6 +6,13 @@
   background: var(--bg);
   isolation: isolate;
 
+  &__stage {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 60%;
+    will-change: transform, opacity;
+  }
+
   /* Верхний скрим под шапку: навигация читается поверх яркой сцены */
   &::before {
     content: '';

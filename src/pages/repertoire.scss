@@ -1,0 +1,151 @@
+@use '../styles/rep-list';
+
+.rep-page {
+  &__head {
+    padding-top: calc(var(--header-h) + clamp(2rem, 1rem + 4vw, 5rem));
+    padding-bottom: clamp(1.5rem, 1rem + 2vw, 3rem);
+
+    .lead {
+      margin-top: var(--s-4);
+      max-width: 40rem;
+    }
+  }
+
+  &__note {
+    margin: var(--s-5) 0 var(--s-6);
+    max-width: 40rem;
+    color: var(--ink-2);
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+  }
+
+  &__panel {
+    animation: rep-panel-in 420ms var(--ease-out);
+  }
+
+  &__end {
+    text-align: center;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--s-5);
+
+      .lead {
+        max-width: 34rem;
+      }
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+}
+
+@keyframes rep-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Переключатель программ: вкладки как строка концертной афиши */
+.rep-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--line);
+
+  &__tab {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    min-height: 2.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--r-pill);
+    color: var(--ink-2);
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
+    line-height: 1.1;
+    transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+
+    &:hover {
+      color: var(--ink);
+      background: oklch(1 0 0 / 0.06);
+    }
+
+    &[aria-selected='true'] {
+      color: var(--ink-on-accent);
+      background: var(--accent-soft);
+
+      .rep-tabs__count {
+        color: oklch(0.3 0.08 262);
+      }
+    }
+  }
+
+  &__count {
+    font-family: var(--font-ui);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Списки песен: колонки по авторам, как в программке */
+.songs {
+  columns: 1;
+  column-gap: clamp(2rem, 1.5rem + 2vw, 4rem);
+
+  &__group {
+    break-inside: avoid;
+    margin-bottom: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+
+    h3 {
+      font-size: var(--fs-h4);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .songs {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .songs {
+    columns: 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rep-page__panel {
+    animation: none;
+  }
+}

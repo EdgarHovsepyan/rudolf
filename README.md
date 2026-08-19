@@ -21,12 +21,13 @@ npm run preview  # просмотр сборки
 | `src/content/site.js` | **Весь текст сайта**: контакты, меню, оффер, праздники, репертуар, видео, биография, награды, подписи к фото. Меняйте здесь. |
 | `src/styles/tokens.scss` | Дизайн-токены: цвета (OKLCH), шрифты, шкала размеров, отступы, z-index, тайминги анимаций. |
 | `src/styles/global.scss` | @font-face (шрифты self-hosted), reset, базовая типографика, кнопки, reveal-анимации, печать резюме. |
-| `src/pages/` | `Home` (герой + секции), `AboutPage` (резюме артиста), `GalleryPage` (мозаика). |
-| `src/components/sections/` | Секции главной: Intro, Occasions, Repertoire, Videos, AboutShort, GalleryPreview, Contact. |
+| `src/pages/` | `Home` (герой + секции), `RepertoirePage` (три программы: песни Магомаева, эстрада, арии и романсы), `AboutPage` (резюме артиста), `GalleryPage` (мозаика + лайтбокс). |
+| `src/components/sections/` | Секции главной: Intro, Occasions, VideoBand (видео во всю ширину), Repertoire, Videos, AboutShort, GalleryPreview, Contact. |
+| `src/lib/gsap.js`, `src/hooks/useSectionMotion.js` | Хореография скролла на GSAP + ScrollTrigger через `useGSAP`. Опт-ин атрибутами `data-split`, `data-stagger`, `data-parallax`, `data-drift`, `data-zoom`. |
 | `src/components/Scene/` | 3D-сцена героя: имя в хроме (RenderTexture с бриллиантом), портрет, HDR-небо, звёзды, дождь света, bloom. Тиринг по устройству + адаптивный DPR. |
 | `src/assets/photos/` | Фотографии со сцены в WebP (1280 и 640), оригиналы в `photos/src`. |
 | `public/video/` | Концерт с оркестром: полная запись (25 МБ, грузится по клику), немой 18-секундный фрагмент для главной, постер. |
-| `public/fonts/` | Prata (заголовки), Golos Text (текст), Russo One (3D-имя). Лицензии OFL рядом. |
+| `public/fonts/` | Prata (заголовки), Alegreya (текст, как в театральной программке), Golos Text (интерфейс), Russo One (3D-имя). Лицензии OFL рядом. |
 | `assets-source/` | Исходники, которые не попадают в сборку (полноразмерный HDR, PNG портрета, неиспользуемые файлы). |
 | `PRODUCT.md` | Стратегия: аудитория, цель, голос бренда, принципы дизайна. |
 

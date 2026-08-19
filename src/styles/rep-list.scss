@@ -1,0 +1,67 @@
+/* Академический репертуар: арии и романсы в две колонки. Используется на /about и /repertoire */
+.rep {
+  display: grid;
+  gap: clamp(2rem, 1.5rem + 2vw, 4rem);
+
+  &__col h3 {
+    margin-bottom: var(--s-4);
+    padding-bottom: var(--s-3);
+    border-bottom: 1px solid var(--line);
+  }
+
+  &__arias {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: grid;
+      gap: 0.1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+
+  &__composer {
+    font-family: var(--font-ui);
+    font-size: var(--fs-caption);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  &__piece {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  &__from {
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+  }
+
+  &__romances {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    > li {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+  }
+}
+
+@media (min-width: 760px) {
+  .rep {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}

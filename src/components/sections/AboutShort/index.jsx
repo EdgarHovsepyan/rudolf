@@ -18,11 +18,14 @@ const AboutShort = () => (
                     alt="Рудольф Овсепян поёт с микрофоном на фоне симфонического оркестра"
                     loading="lazy"
                     decoding="async"
+                    data-parallax="7"
                 />
             </figure>
 
             <div className="about-short__text reveal">
-                <h2 id="about-title">{aboutShort.title}</h2>
+                <h2 id="about-title" data-split>
+                    {aboutShort.title}
+                </h2>
                 {aboutShort.paragraphs.map((p) => (
                     <p key={p} className="lead">
                         {p}

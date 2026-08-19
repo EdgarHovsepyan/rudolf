@@ -39,19 +39,21 @@ const FeaturedVideo = ({ src, poster, title, meta }) => {
 const Videos = () => (
     <section id="video" className="section videos" aria-labelledby="videos-title">
         <div className="container">
-            <div className="section-head reveal">
-                <h2 id="videos-title">{videos.title}</h2>
-                <p>{videos.lead}</p>
+            <div className="section-head">
+                <h2 id="videos-title" data-split>
+                    {videos.title}
+                </h2>
+                <p className="reveal">{videos.lead}</p>
             </div>
-            <div className="videos__grid reveal">
-                <div className="videos__main">
+            <div className="videos__grid">
+                <div className="videos__main reveal">
                     <FeaturedVideo {...videos.featured} />
                 </div>
-                {videos.items.map((v) => (
-                    <div key={v.id} className="videos__side">
-                        <LiteYouTube id={v.id} title={v.title} meta={v.meta} />
-                    </div>
-                ))}
+                <div className="videos__list" data-stagger>
+                    {videos.items.map((v) => (
+                        <LiteYouTube key={v.id} id={v.id} title={v.title} meta={v.meta} />
+                    ))}
+                </div>
             </div>
         </div>
     </section>
