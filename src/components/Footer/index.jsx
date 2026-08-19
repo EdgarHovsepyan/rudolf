@@ -1,25 +1,49 @@
-import React from 'react';
-import "./style.scss";
+import { Link } from 'react-router-dom';
+import { contacts, footer, nav, site } from '../../content/site';
+import './style.scss';
+
+const year = new Date().getFullYear();
 
 const Footer = () => (
-    <footer>
-        <div className="quick-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#performances">Performances</a>
-            <a href="#gallery">Gallery</a>
-            {/*<a href="#contact">Contact</a>*/}
+    <footer className="site-footer">
+        <div className="container site-footer__grid">
+            <div className="site-footer__brand">
+                <p className="site-footer__name">{site.name}</p>
+                <p className="site-footer__line">{footer.line}</p>
+            </div>
+            <nav aria-label="Карта сайта">
+                <ul role="list" className="site-footer__links">
+                    {nav.map((item) => (
+                        <li key={item.to}>
+                            <Link to={item.to}>{item.label}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+            <ul role="list" className="site-footer__contacts">
+                <li>
+                    <a href={contacts.phoneHref}>{contacts.phoneDisplay}</a>
+                </li>
+                <li>
+                    <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
+                </li>
+                <li>
+                    <a href={contacts.whatsapp} target="_blank" rel="noopener">
+                        WhatsApp
+                    </a>
+                    <span aria-hidden="true"> · </span>
+                    <a href={contacts.telegram} target="_blank" rel="noopener">
+                        Telegram
+                    </a>
+                </li>
+                <li className="muted">{contacts.area}</li>
+            </ul>
         </div>
-        <div className="contact-info">
-            <p>Email: rudolf1994@mail.ru</p>
-            <p>Phone: 8-904-007-04-54</p>
+        <div className="container site-footer__bottom">
+            <p>
+                © {year} {site.name}
+            </p>
         </div>
-        <div className="social-media">
-            <a href="#"><i className="fa fa-instagram"></i></a>
-            <a href="#"><i className="fa fa-facebook"></i></a>
-            <a href="#"><i className="fa fa-youtube"></i></a>
-        </div>
-        <p>&copy; 2024 Rudolf Hovsepyan. All Rights Reserved.</p>
     </footer>
 );
 

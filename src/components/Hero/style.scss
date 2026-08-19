@@ -1,110 +1,103 @@
 .hero {
-  width: 100%;
-  height: 100vh;
   position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+  isolation: isolate;
 
-  .hero-content {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+  /* Верхний скрим под шапку: навигация читается поверх яркой сцены */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: calc(var(--header-h) + 3rem);
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, oklch(0.1 0.03 275 / 0.7), transparent);
+  }
 
-    .info-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 10;
-      transform: translate(-50%, -50%);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 16px;
-      padding: 0 16px;
-      width: 100%;
-      text-align: center;
+  /* Нижний градиент: сцена плавно уходит в фон следующей секции */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 22%;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+  }
 
-      h1 {
-        font-size: 32px;
-        letter-spacing: 6px;
-        opacity: 0;
-        user-select: none;
-      }
+  &__scroll {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: clamp(1.25rem, 3vh, 2.25rem);
+    transform: translateX(-50%);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 2.875rem;
+    min-height: 2.875rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--r-pill);
+    color: var(--ink-2);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 600ms var(--ease-out) 300ms, color var(--dur-fast) var(--ease-out);
 
-      p {
-        font-size: 18px;
-        letter-spacing: 3px;
-        opacity: 0;
-        user-select: none;
-      }
-
-      a {
-        font-size: 16px;
-        letter-spacing: 2px;
-        opacity: 0;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        text-decoration: none;
-        user-select: none;
-
-        &:hover {
-          text-decoration: underline wavy;
-          letter-spacing: 3px;
-        }
-      }
+    .hero.is-ready & {
+      opacity: 1;
     }
+
+    &:hover {
+      color: var(--ink);
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      animation: hero-scroll-hint 2.4s var(--ease-in-out) infinite;
+    }
+  }
+
+  &__scroll-text {
+    font-size: var(--fs-caption);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 }
 
-// 📱 Mobile styles
-@media (max-width: 768px) {
-  .hero {
-    .hero-content {
-      .info-container {
-        gap: 12px;
-        top: 30%;
-
-        h1 {
-          font-size: 22px;
-          letter-spacing: 4px;
-        }
-
-        p {
-          font-size: 14px;
-          letter-spacing: 2px;
-        }
-
-        a {
-          font-size: 14px;
-        }
-      }
-    }
+@keyframes hero-scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
   }
 }
 
-// 📱 Extra small (iPhone SE, etc.)
-@media (max-width: 480px) {
+@media (max-width: 899px) {
   .hero {
-    .hero-content {
-      .info-container {
-        h1 {
-          font-size: 18px;
-          letter-spacing: 2px;
-        }
+    min-height: 92svh;
+  }
+}
 
-        p {
-          font-size: 13px;
-        }
+/* На десктопе имя в хроме стоит внизу по центру, поэтому подсказка уходит в правый угол */
+@media (min-width: 900px) {
+  .hero__scroll {
+    left: auto;
+    right: var(--gutter);
+    transform: none;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+}
 
-        a {
-          font-size: 13px;
-        }
-      }
-    }
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll svg {
+    animation: none;
   }
 }

@@ -1,39 +1,30 @@
-import React, {lazy} from 'react';
-import {createBrowserRouter, Outlet} from 'react-router-dom';
-import PageTransition from '../components/PageTransition';
-import Hero from '../components/Hero';
-import Layout from "../components/Layout";
+/* eslint-disable react-refresh/only-export-components -- файл роутера экспортирует конфиг, не компонент */
+import { lazy } from 'react';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import Layout from '../components/Layout';
+import Home from '../pages/Home.jsx';
 
-const About = lazy(() => import('../components/About'));
-// const Contact = lazy(() => import('../components/Contact'));
-const Gallery = lazy(() => import('../components/Gallery'));
-const Performances = lazy(() => import('../components/Performances'));
+const AboutPage = lazy(() => import('../pages/AboutPage.jsx'));
+const GalleryPage = lazy(() => import('../pages/GalleryPage.jsx'));
 
+// На GitHub Pages сайт живёт в подпапке (/rudolf/): basename берём из BASE_URL сборки
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const router = createBrowserRouter([
-    {
-        element: <Layout/>,
-        children: [
-            {
-                path: '/',
-                element: <Hero />,
-            },
-            {
-                path: '/*',
-                element: (
-                    <PageTransition>
-                        <Outlet/>
-                    </PageTransition>
-                ),
-                children: [
-                    {path: 'about', element: <About/>},
-                    // {path: 'contact', element: <Contact/>},
-                    {path: 'gallery', element: <Gallery/>},
-                    {path: 'performances', element: <Performances/>},
-                ],
-            },
-        ],
-    },
-]);
+const router = createBrowserRouter(
+    [
+        {
+            element: <Layout />,
+            children: [
+                { path: '/', element: <Home /> },
+                { path: '/about', element: <AboutPage /> },
+                { path: '/gallery', element: <GalleryPage /> },
+                // Старый маршрут: программа выступлений теперь живёт на главной
+                { path: '/performances', element: <Navigate to="/#occasions" replace /> },
+                { path: '*', element: <Navigate to="/" replace /> },
+            ],
+        },
+    ],
+    { basename },
+);
 
 export default router;

@@ -13,6 +13,42 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
+    // Проект на JS без TypeScript: пропсы документированы по месту, prop-types не используем
+    'react/prop-types': 'off',
+    // Свойства react-three-fiber не являются DOM-атрибутами
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: [
+          'dispose',
+          'castShadow',
+          'receiveShadow',
+          'geometry',
+          'material',
+          'attach',
+          'args',
+          'position',
+          'rotation',
+          'scale',
+          'intensity',
+          'transparent',
+          'toneMapped',
+          'object',
+          'map',
+          'inert',
+          'fetchPriority',
+          'frustumCulled',
+          'count',
+          'itemSize',
+          'array',
+          'uniforms',
+          'vertexShader',
+          'fragmentShader',
+          'depthWrite',
+          'blending',
+        ],
+      },
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

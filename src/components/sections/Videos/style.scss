@@ -1,0 +1,29 @@
+.videos {
+  &__grid {
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  }
+
+  &__featured .yt__frame video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+}
+
+/* Концерт с оркестром крупно слева, три записи столбиком справа: одна доминанта, не сетка одинаковых карточек */
+@media (min-width: 800px) {
+  .videos__grid {
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    align-items: start;
+  }
+
+  .videos__main {
+    grid-row: 1 / span 3;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+}

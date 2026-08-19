@@ -1,0 +1,99 @@
+/* Design tokens: one deep indigo stage, one spotlight accent, one warm mark from the logo. */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: oklch(0.13 0.035 275);
+  --bg-raised: oklch(0.165 0.04 273);
+  --surface: oklch(0.2 0.045 271);
+  --surface-2: oklch(0.25 0.05 270);
+  --line: oklch(0.98 0.01 260 / 0.12);
+  --line-strong: oklch(0.98 0.01 260 / 0.24);
+  --scrim: oklch(0.1 0.03 275 / 0.72);
+
+  /* Ink */
+  --ink: oklch(0.965 0.008 260);
+  --ink-2: oklch(0.84 0.018 262);
+  --ink-3: oklch(0.7 0.03 262);
+  --ink-on-accent: oklch(0.15 0.035 275);
+
+  /* Accent: the logo blue, kept from the original identity (#578ff6) */
+  --accent: oklch(0.68 0.165 262);
+  --accent-soft: oklch(0.8 0.11 262);
+  --accent-strong: oklch(0.6 0.2 262);
+  --accent-tint: oklch(0.68 0.165 262 / 0.14);
+  --warm: oklch(0.8 0.14 58);
+  --warm-tint: oklch(0.8 0.14 58 / 0.16);
+
+  /* Messenger brand colours, used only on their own buttons */
+  --whatsapp: oklch(0.72 0.17 150);
+  --telegram: oklch(0.72 0.13 230);
+
+  /* Type */
+  --font-display: 'Prata', 'Times New Roman', Georgia, serif;
+  --font-body: 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --fs-hero: clamp(2.625rem, 1.5rem + 4.2vw, 5.75rem);
+  --fs-h2: clamp(2rem, 1.35rem + 2.4vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 1.25rem + 1vw, 2.125rem);
+  --fs-h4: clamp(1.125rem, 1.05rem + 0.3vw, 1.3rem);
+  --fs-lead: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-caption: 0.8125rem;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-body: 1.65;
+
+  /* Space (4px base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --section-y: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --gutter: clamp(1.25rem, 0.5rem + 4vw, 4rem);
+  --container: 76rem;
+  --measure: 62ch;
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* Elevation: one defined shadow, never paired with a border */
+  --shadow-soft: 0 6px 8px -4px oklch(0 0 0 / 0.45);
+
+  /* Z scale */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 20;
+  --z-header: 30;
+  --z-overlay: 40;
+  --z-menu: 50;
+  --z-loader: 60;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+  --dur-fast: 150ms;
+  --dur: 240ms;
+  --dur-slow: 420ms;
+
+  /* Layout helpers */
+  --header-h: 4.5rem;
+  --cta-bar-h: 4rem;
+}
+
+@media (max-width: 899px) {
+  :root {
+    --header-h: 4rem;
+    --fs-body: 1rem;
+  }
+}

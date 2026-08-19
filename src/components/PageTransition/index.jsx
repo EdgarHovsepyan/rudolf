@@ -1,46 +1,38 @@
-import React, { useRef, useEffect, Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
-import Spinner from '../Spinner/index.jsx';
 import './style.scss';
 
+/**
+ * Занавес между страницами. Срабатывает только при смене пути (не якоря),
+ * уважает prefers-reduced-motion и никогда не перекрывает контент дольше 1.2 с.
+ */
 const PageTransition = () => {
-    const location = useLocation();
-    const transitionRef = useRef();
+    const { pathname } = useLocation();
+    const ref = useRef(null);
+    const first = useRef(true);
 
     useEffect(() => {
-        const timeline = gsap.timeline();
+        if (first.current) {
+            first.current = false;
+            return undefined;
+        }
+        const el = ref.current;
+        if (!el) return undefined;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
 
-        // Reset the transition element to the initial state
-        gsap.set(transitionRef.current, { height: '0%', top: '-100%' });
-
-        // Animation for hiding the current page
-        timeline.to(transitionRef.current, {
-            duration: 0.8,
-            height: '100%',
-            top: 0,
-            ease: 'power4.inOut',
-        });
-
-        // Animation for revealing the new page
-        timeline.to(transitionRef.current, {
-            duration: 0.8,
-            height: '0%',
-            top: '100%',
-            ease: 'power4.inOut',
-            delay: 0.2,
-        });
-    }, [location]);
+        const tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } });
+        tl.set(el, { yPercent: -100, autoAlpha: 1 })
+            .to(el, { yPercent: 0, duration: 0.45 })
+            .to(el, { yPercent: 100, duration: 0.55, delay: 0.15 })
+            .set(el, { autoAlpha: 0, yPercent: -100 });
+        return () => tl.kill();
+    }, [pathname]);
 
     return (
-        <>
-            <div ref={transitionRef} className="transition">
-                <h1>RUDOLF</h1>
-            </div>
-            <Suspense fallback={null}>
-                <Outlet />
-            </Suspense>
-        </>
+        <div ref={ref} className="page-curtain" aria-hidden="true">
+            <span>Рудольф</span>
+        </div>
     );
 };
 

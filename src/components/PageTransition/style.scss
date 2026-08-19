@@ -1,47 +1,22 @@
-.transition {
+.page-curtain {
   position: fixed;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-orientation: upright;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: oklch(0.09 0.03 275);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100%);
+  will-change: transform;
 
-  h1 {
-    padding: 10px;
-    color: white;
-    font-size: 7rem;
-    text-align: center;
-    text-shadow: 0 0 20px white;
-    writing-mode: tb-rl;
-    position: absolute;
-    top: 0;
-  }
-}
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-  .transition {
-    h1 {
-      font-size: 4rem;
-      top: 25%;
-      padding: 5px;
-      text-shadow: 0 0 12px white;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .transition {
-    h1 {
-      font-size: 3rem;
-      top: 22%;
-      padding: 2px;
-      text-shadow: 0 0 8px white;
-    }
+  span {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 2rem + 6vw, 7rem);
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 40px oklch(0.68 0.165 262 / 0.5);
   }
 }

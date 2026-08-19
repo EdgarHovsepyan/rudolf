@@ -1,0 +1,146 @@
+.intro {
+  position: relative;
+  padding-top: clamp(2.5rem, 1.5rem + 3vw, 5rem);
+
+  &__grid {
+    display: grid;
+    gap: clamp(2rem, 1.5rem + 3vw, 4.5rem);
+    align-items: center;
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-5);
+  }
+
+  /* Сезонная строка: один акцентный маркер, без «eyebrow» на каждой секции */
+  &__season {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.9rem 0.45rem 0.6rem;
+    border-radius: var(--r-pill);
+    background: var(--warm-tint);
+    color: var(--warm);
+    font-size: var(--fs-small);
+    font-weight: 600;
+
+    span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--warm);
+      box-shadow: 0 0 10px var(--warm);
+      animation: intro-pulse 2.2s var(--ease-in-out) infinite;
+    }
+  }
+
+  h1 {
+    font-size: clamp(2rem, 1.2rem + 3vw, 4.25rem);
+    max-width: 16ch;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  &__lead {
+    font-size: var(--fs-lead);
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 34rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  &__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+
+    li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+
+      &::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-soft);
+        box-shadow: 0 0 10px var(--accent);
+        flex: none;
+      }
+    }
+  }
+
+  &__media {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+
+    figcaption {
+      position: absolute;
+      inset: auto 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding: 2.5rem 1rem 0.9rem;
+      background: linear-gradient(to top, oklch(0.1 0.03 275 / 0.9), transparent);
+      color: var(--ink);
+      font-size: var(--fs-small);
+      font-weight: 600;
+    }
+  }
+
+  &__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--surface);
+  }
+
+  &__media-link {
+    color: var(--accent-soft);
+    font-weight: 500;
+    min-height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@keyframes intro-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+}
+
+@media (min-width: 900px) {
+  .intro__grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro__season span {
+    animation: none;
+  }
+}

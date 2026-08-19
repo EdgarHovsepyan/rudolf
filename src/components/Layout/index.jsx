@@ -1,21 +1,55 @@
-// Layout.js
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from "../Header";
-import Footer from "../Footer";
-import AudioVisualizerComponent from "../AudioVisualizerComponent/index.jsx";
+import { Suspense, useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Header from '../Header';
+import Footer from '../Footer';
+import StickyCta from '../StickyCta';
+import AudioPlayer from '../AudioPlayer';
+import PageTransition from '../PageTransition';
 
-const Layout = () => {
-    return (
-        <div className="layout">
-            <Header />
-            <AudioVisualizerComponent />
-            <main className="content">
-                <Outlet />
-            </main>
-            {/*<Footer />*/}
-        </div>
-    );
+/* Прокрутка: к якорю при наличии #hash (с повтором, пока секция грузится), иначе наверх. */
+const ScrollManager = () => {
+    const { pathname, hash } = useLocation();
+
+    useEffect(() => {
+        if (!hash) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            return undefined;
+        }
+        const id = decodeURIComponent(hash.slice(1));
+        let tries = 0;
+        let raf = 0;
+        const attempt = () => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ block: 'start' });
+                return;
+            }
+            if (tries++ < 40) raf = requestAnimationFrame(attempt);
+        };
+        attempt();
+        return () => cancelAnimationFrame(raf);
+    }, [pathname, hash]);
+
+    return null;
 };
+
+const Layout = () => (
+    <>
+        <a className="skip-link" href="#main">
+            К содержанию
+        </a>
+        <ScrollManager />
+        <Header />
+        <PageTransition />
+        <main id="main" className="content" tabIndex={-1}>
+            <Suspense fallback={null}>
+                <Outlet />
+            </Suspense>
+        </main>
+        <Footer />
+        <StickyCta />
+        <AudioPlayer />
+    </>
+);
 
 export default Layout;
