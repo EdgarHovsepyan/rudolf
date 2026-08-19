@@ -1,14 +1,14 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Environment, Image, PerformanceMonitor, Preload } from '@react-three/drei';
+import { Image, PerformanceMonitor, Preload } from '@react-three/drei';
 import BackgroundText from '../BackgroundText';
 import Effects from '../Effects';
 import Rain from '../Rain';
+import Sky from './Sky';
 import ProgressReporter from './ProgressReporter';
 import { asset } from '../../lib/asset';
 import './style.scss';
 
-const ENV = asset('models/sky-1k.hdr'); // 1k HDR: 1.6 МБ вместо 5 МБ, фон всё равно размыт
 const PHOTO = asset('models/photo.webp');
 
 const useMedia = (query) => {
@@ -102,7 +102,7 @@ const Scene = () => {
                         url={PHOTO}
                         transparent
                     />
-                    <Environment background backgroundBlurriness={0.18} backgroundRotation={[0, Math.PI / 2, 0]} files={ENV} />
+                    <Sky />
                     {!reduced && <Rain count={tier.rain} mouse={mouse} />}
                     <Effects reduced={reduced} passes={tier.bloomPasses} msaa={tier.msaa} stars={tier.stars} />
                     <Preload all />

@@ -11,6 +11,8 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
+    /* Заглушка до загрузки постера: тёмная сцена, чтобы белый текст читался с первого кадра */
+    background: radial-gradient(70% 60% at 50% 40%, oklch(0.22 0.05 272), oklch(0.12 0.03 275));
   }
 
   &__video {

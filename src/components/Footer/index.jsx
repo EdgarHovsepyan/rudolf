@@ -27,11 +27,10 @@ const Footer = () => (
                 <li>
                     <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
                 </li>
-                <li>
+                <li className="site-footer__messengers">
                     <a href={contacts.whatsapp} target="_blank" rel="noopener">
                         WhatsApp
                     </a>
-                    <span aria-hidden="true"> · </span>
                     <a href={contacts.telegram} target="_blank" rel="noopener">
                         Telegram
                     </a>

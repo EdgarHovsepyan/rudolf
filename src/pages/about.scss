@@ -159,7 +159,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      min-height: 2rem;
+      /* 44px — минимальная тач-цель (WCAG 2.2 target size) */
+      min-height: 2.75rem;
       color: var(--ink);
       text-decoration: none;
 

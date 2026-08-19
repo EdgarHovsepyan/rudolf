@@ -26,7 +26,7 @@ const VideoBand = () => {
                     el.pause();
                 }
             },
-            { threshold: 0.2 },
+            { threshold: 0.2, rootMargin: '200px 0px' },
         );
         io.observe(el);
         return () => io.disconnect();
@@ -42,11 +42,13 @@ const VideoBand = () => {
     return (
         <section className="video-band" aria-label="Фрагмент концерта с симфоническим оркестром">
             <div className="video-band__media">
+                {/* Постер грузим только когда полоса подошла к экрану: иначе браузер тянет его сразу,
+                    хотя секция далеко внизу. До этого место держит затемнённая заглушка. */}
                 <video
                     ref={videoRef}
                     className="video-band__video"
                     data-zoom
-                    poster={videos.featured.poster}
+                    poster={allowed ? videos.featured.poster : undefined}
                     muted
                     loop
                     playsInline

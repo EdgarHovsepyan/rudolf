@@ -3,7 +3,10 @@
   display: grid;
   gap: clamp(2rem, 1.5rem + 2vw, 4rem);
 
-  &__col h3 {
+  /* На /about эти заголовки идут под h2 секции, на /repertoire — прямо под h1,
+     поэтому уровень разный, а вид один */
+  &__col :is(h2, h3) {
+    font-size: var(--fs-h3);
     margin-bottom: var(--s-4);
     padding-bottom: var(--s-3);
     border-bottom: 1px solid var(--line);

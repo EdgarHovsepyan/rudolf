@@ -30,7 +30,8 @@
   a {
     display: inline-flex;
     align-items: center;
-    min-height: 2.5rem;
+    /* 44px — минимальная тач-цель (WCAG 2.2 target size) */
+    min-height: 2.75rem;
     color: var(--ink-2);
     text-decoration: none;
 
@@ -38,6 +39,13 @@
       color: var(--ink);
       text-decoration: underline;
     }
+  }
+
+  /* Мессенджеры в строку с зазором: две отдельные тач-цели, а не слипшаяся пара */
+  &__messengers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
   }
 
   &__bottom {

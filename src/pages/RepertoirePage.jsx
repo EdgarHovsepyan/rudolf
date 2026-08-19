@@ -13,7 +13,7 @@ const SongGroups = ({ groups, keyName }) => (
     <div className="songs">
         {groups.map((g) => (
             <section key={g[keyName]} className="songs__group reveal" aria-label={g[keyName]}>
-                <h3>{g[keyName]}</h3>
+                <h2>{g[keyName]}</h2>
                 <ul role="list">
                     {g.pieces.map((p) => (
                         <li key={p}>{p}</li>
@@ -87,7 +87,7 @@ const RepertoirePage = () => {
                     {tab === 'classical' && (
                         <div className="rep">
                             <div className="rep__col reveal">
-                                <h3>Арии</h3>
+                                <h2>Арии</h2>
                                 <ul role="list" className="rep__arias">
                                     {bio.arias.map((a) => (
                                         <li key={a.piece}>
@@ -99,7 +99,7 @@ const RepertoirePage = () => {
                                 </ul>
                             </div>
                             <div className="rep__col reveal">
-                                <h3>Романсы и песни</h3>
+                                <h2>Романсы и песни</h2>
                                 <ul role="list" className="rep__romances">
                                     {bio.romances.map((group) => (
                                         <li key={group.composer}>

@@ -15,43 +15,25 @@ module.exports = {
     'react/jsx-no-target-blank': 'off',
     // Проект на JS без TypeScript: пропсы документированы по месту, prop-types не используем
     'react/prop-types': 'off',
-    // Свойства react-three-fiber не являются DOM-атрибутами
-    'react/no-unknown-property': [
-      'error',
-      {
-        ignore: [
-          'dispose',
-          'castShadow',
-          'receiveShadow',
-          'geometry',
-          'material',
-          'attach',
-          'args',
-          'position',
-          'rotation',
-          'scale',
-          'intensity',
-          'transparent',
-          'toneMapped',
-          'object',
-          'map',
-          'inert',
-          'fetchPriority',
-          'frustumCulled',
-          'count',
-          'itemSize',
-          'array',
-          'uniforms',
-          'vertexShader',
-          'fragmentShader',
-          'depthWrite',
-          'blending',
-        ],
-      },
-    ],
+    // Не-DOM атрибуты, которые встречаются и в обычной разметке
+    'react/no-unknown-property': ['error', { ignore: ['inert', 'fetchPriority'] }],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    {
+      // Сцена на react-three-fiber: <mesh>, <meshPhysicalMaterial> и их пропсы —
+      // это three.js, а не DOM, поэтому правило про неизвестные атрибуты здесь неприменимо.
+      files: [
+        'src/components/Scene/**',
+        'src/components/Model/**',
+        'src/components/BackgroundText/**',
+        'src/components/Rain/**',
+        'src/components/Effects/**',
+      ],
+      rules: { 'react/no-unknown-property': 'off' },
+    },
+  ],
 }
