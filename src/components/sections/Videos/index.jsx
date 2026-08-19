@@ -21,7 +21,8 @@ const FeaturedVideo = ({ src, poster, title, meta }) => {
                     <video ref={ref} src={src} poster={poster} controls playsInline preload="auto" aria-label={title} />
                 ) : (
                     <button type="button" className="yt__poster" onClick={start} aria-label={`Смотреть: ${title}`}>
-                        <img src={poster} alt="" width="848" height="480" />
+                        {/* lazy обязателен: секция далеко внизу, иначе постер тянется сразу при загрузке страницы */}
+                        <img src={poster} alt="" width="1280" height="724" loading="lazy" decoding="async" />
                         <span className="yt__play" aria-hidden="true">
                             <FiPlay />
                         </span>

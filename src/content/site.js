@@ -172,7 +172,7 @@ export const videos = {
   lead: 'Записи с концертов и конкурсов. Академическая школа слышна в каждой ноте, а значит, и эстрада прозвучит по-настоящему.',
   featured: {
     src: asset('video/orchestra-full.mp4'),
-    poster: asset('video/orchestra-poster.jpg'),
+    poster: asset('video/orchestra-poster.webp'),
     loop: asset('video/orchestra-loop.mp4'),
     title: 'С симфоническим оркестром',
     meta: 'Концертная запись, 5 мин',
