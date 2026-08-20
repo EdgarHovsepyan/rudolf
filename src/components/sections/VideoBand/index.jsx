@@ -48,7 +48,7 @@ const VideoBand = () => {
                     ref={videoRef}
                     className="video-band__video"
                     data-zoom
-                    poster={allowed ? videos.featured.poster : undefined}
+                    poster={allowed ? videos.band.poster : undefined}
                     muted
                     loop
                     playsInline
@@ -56,7 +56,7 @@ const VideoBand = () => {
                     aria-hidden="true"
                     tabIndex={-1}
                 >
-                    {allowed && <source src={videos.featured.loop} type="video/mp4" />}
+                    {allowed && <source src={videos.band.loop} type="video/mp4" />}
                 </video>
             </div>
             <div className="video-band__overlay">

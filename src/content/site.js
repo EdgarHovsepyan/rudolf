@@ -173,9 +173,15 @@ export const videos = {
   featured: {
     src: asset('video/orchestra-full.mp4'),
     poster: asset('video/orchestra-poster.webp'),
-    loop: asset('video/orchestra-loop.mp4'),
     title: 'С симфоническим оркестром',
     meta: 'Концертная запись, 5 мин',
+  },
+  /* Полоса во всю ширину: беззвучная петля 720p из исходника 1080p.
+     Свой постер (первый кадр петли), чтобы переход постер → видео шёл без скачка,
+     и чтобы постер не был резче самой записи в плеере ниже. */
+  band: {
+    loop: asset('video/orchestra-loop.mp4'),
+    poster: asset('video/band-poster.webp'),
   },
   items: [
     {
