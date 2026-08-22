@@ -250,13 +250,14 @@
   }
 }
 
-/* Когда док открыт, страница получает отступ снизу: иначе последний трек и футер
-   оказываются под панелью. :has() поддерживают все актуальные браузеры. */
-body:has(.dock) {
-  padding-bottom: 4.5rem;
-}
-
 @media (min-width: 900px) {
+  /* Отступ под док держим ВНУТРИ брейкпоинта: без этого правило с той же
+     специфичностью перебивало мобильное (там панелей две — док и контакты),
+     и последние 32px подвала уходили под них. */
+  body:has(.dock) {
+    padding-bottom: 4.5rem;
+  }
+
   .dock__inner {
     grid-template-columns: minmax(11rem, 1fr) auto minmax(14rem, 2fr) auto;
     grid-template-areas: 'now transport seek side';
