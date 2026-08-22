@@ -556,10 +556,13 @@ figcaption {
     padding-bottom: 0 !important;
   }
 
+  /* Имена классов держать в синхроне с компонентами: плеер переименован
+     .audio-player -> .dock, занавес .page-curtain -> .curtain, и старые
+     селекторы молча перестали прятать док — он печатался поверх резюме. */
   .site-header,
   .sticky-cta,
-  .audio-player,
-  .page-curtain,
+  .dock,
+  .curtain,
   .skip-link,
   .about-page__end,
   .about-page__cta,

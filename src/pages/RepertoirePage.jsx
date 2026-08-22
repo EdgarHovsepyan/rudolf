@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPhone } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa6';
-import { bio, contacts, estradaSongs, magomaevSongs, repertoirePage, site } from '../content/site';
+import { bio, contacts, estradaSongs, magomaevSongs, repertoirePage } from '../content/site';
 import useReveal from '../hooks/useReveal';
 import useSectionMotion from '../hooks/useSectionMotion';
 import usePageMeta from '../hooks/usePageMeta';
@@ -32,8 +32,8 @@ const RepertoirePage = () => {
     useSectionMotion(scope);
 
     usePageMeta(
-        `Репертуар: песни Магомаева, эстрада, арии и романсы — ${site.name}`,
-        '26 песен из репертуара Муслима Магомаева, 59 эстрадных хитов от Ободзинского до Лепса, 9 оперных арий и 30 романсов. Любую песню можно добавить к программе вашего вечера.',
+        'Репертуар: эстрада, песни Магомаева, арии и романсы',
+        '26 песен из репертуара Магомаева, 59 эстрадных хитов, 9 оперных арий и 30 романсов. Любую песню добавлю к программе вашего вечера.',
     );
 
     const counts = {
