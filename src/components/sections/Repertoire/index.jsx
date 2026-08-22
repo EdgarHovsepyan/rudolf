@@ -19,7 +19,7 @@ const Repertoire = () => (
             </div>
 
             <p className="repertoire__label reveal">В моём исполнении прозвучат хиты:</p>
-            <ul className="repertoire__lineup" role="list" aria-label="Артисты, чьи песни звучат в программе" data-stagger data-drift="2.5">
+            <ul className="repertoire__lineup" role="list" aria-label="Артисты, чьи песни звучат в программе" data-slide>
                 {repertoire.artists.map((name) => (
                     <li key={name}>{name}</li>
                 ))}
