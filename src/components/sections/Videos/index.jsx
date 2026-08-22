@@ -43,6 +43,7 @@ const Videos = () => (
     <section id="video" className="section videos" aria-labelledby="videos-title">
         <div className="container">
             <div className="section-head">
+                <p className="videos__kicker reveal">{videos.kicker}</p>
                 <h2 id="videos-title" data-split>
                     {videos.title}
                 </h2>

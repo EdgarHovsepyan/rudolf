@@ -11,13 +11,13 @@ import './style.scss';
 const PageTransition = () => {
     const { pathname } = useLocation();
     const ref = useRef(null);
-    const first = useRef(true);
+    // Сравниваем сам путь, а не флаг «первый рендер»: в StrictMode эффекты вызываются
+    // дважды, флаг успевает сброситься, и занавес играет прямо на загрузке страницы.
+    const prevPath = useRef(pathname);
 
     useEffect(() => {
-        if (first.current) {
-            first.current = false;
-            return undefined;
-        }
+        if (prevPath.current === pathname) return undefined;
+        prevPath.current = pathname;
         const root = ref.current;
         if (!root || reducedMotion()) return undefined;
         const left = root.querySelector('.curtain__half--left');

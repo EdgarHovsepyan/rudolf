@@ -4,79 +4,97 @@ import { gsap, ScrollTrigger, useGSAP, reducedMotion, splitWords } from '../lib/
  * Общая хореография секций. Опт-ин через data-атрибуты внутри scope:
  *  - [data-split]      заголовок появляется по словам снизу из маски
  *  - [data-stagger]    дети (или [data-stagger-item]) приезжают с лёгким сдвигом по очереди
+ *  - [data-slide]      список выезжает сбоку с проявлением (значение 'right' меняет сторону)
  *  - [data-parallax]   медленный параллакс по вертикали (scrub), сила в значении атрибута (%)
  *  - [data-drift]      горизонтальный дрейф на скролле (scrub), сила в значении атрибута (%)
  *  - [data-zoom]       лёгкое приближение 1.1 → 1 на скролле (scrub), для видео/фото во всю ширину
+ *
+ * Два правила, выстраданные на живой странице:
+ *  1) Анимируем ТОЛЬКО то, что при загрузке ещё под сгибом. Если элемент уже на экране,
+ *     он просто остаётся видимым: иначе получается «мигание» — контент показался,
+ *     потом резко спрятался и поехал появляться заново.
+ *  2) Прятать заранее (immediateRender) можно лишь вместе со страховкой: если триггер
+ *     почему-то не сработает, контент обязан проявиться сам. Иначе он исчезает навсегда.
  * Уважает prefers-reduced-motion: тогда ничего не делаем, контент и так виден.
  */
+const START = 'top 88%';
+const FAILSAFE_MS = 6000;
+
 export default function useSectionMotion(scope, deps = []) {
     useGSAP(
         () => {
-            if (reducedMotion()) return;
+            if (reducedMotion()) return undefined;
             const root = scope.current;
-            if (!root) return;
+            if (!root) return undefined;
+
+            const vh = window.innerHeight;
+            // Уже на экране при загрузке — не анимируем совсем
+            const belowFold = (el) => el.getBoundingClientRect().top > vh * 0.9;
+            const pending = [];
+
+            const track = (tween) => {
+                pending.push(tween);
+                return tween;
+            };
 
             root.querySelectorAll('[data-split]').forEach((el) => {
+                if (!belowFold(el)) return;
                 const words = splitWords(el);
                 if (!words.length) return;
-                // fromTo + immediateRender: false — стартовое состояние выставляется ТОЛЬКО
-                // когда триггер сработал. У gsap.from() контент прячется сразу и остаётся
-                // невидимым навсегда, если ScrollTrigger почему-то не выстрелил.
-                gsap.fromTo(
-                    words,
-                    { yPercent: 110, opacity: 0 },
-                    {
-                        yPercent: 0,
-                        opacity: 1,
+                track(
+                    gsap.from(words, {
+                        yPercent: 110,
+                        opacity: 0,
                         duration: 0.9,
                         ease: 'expo.out',
                         stagger: 0.05,
-                        immediateRender: false,
-                        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-                    },
+                        scrollTrigger: { trigger: el, start: START, once: true },
+                    }),
                 );
             });
 
             root.querySelectorAll('[data-stagger]').forEach((el) => {
+                if (!belowFold(el)) return;
                 const items = el.querySelectorAll('[data-stagger-item]').length
                     ? el.querySelectorAll('[data-stagger-item]')
                     : el.children;
-                gsap.fromTo(
-                    items,
-                    { y: 28, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
+                if (!items.length) return;
+                track(
+                    gsap.from(items, {
+                        y: 28,
+                        opacity: 0,
                         duration: 0.8,
                         ease: 'power3.out',
                         stagger: 0.07,
-                        immediateRender: false,
-                        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-                    },
+                        scrollTrigger: { trigger: el, start: START, once: true },
+                    }),
                 );
             });
 
-            /* Выезд списка сбоку: каждый пункт въезжает по очереди из-за края с проявлением.
-               Отдельный приём от data-stagger (тот поднимает снизу) — так соседние секции
-               двигаются по-разному и не выглядят одной и той же анимацией. */
+            /* Выезд списка сбоку: отдельный приём от data-stagger (тот поднимает снизу),
+               чтобы соседние секции не выглядели одной и той же анимацией. */
             root.querySelectorAll('[data-slide]').forEach((el) => {
-                const dir = el.dataset.slide === 'right' ? 1 : -1;
+                if (!belowFold(el)) return;
                 const items = el.querySelectorAll('[data-slide-item]').length
                     ? el.querySelectorAll('[data-slide-item]')
                     : el.children;
                 if (!items.length) return;
-                // ScrollTrigger вешаем на таймлайн, а не на вложенные твины
-                const tl = gsap.timeline({
-                    defaults: { duration: 0.75, ease: 'power3.out' },
-                    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-                });
-                tl.fromTo(
-                    items,
-                    { x: () => dir * (28 + Math.random() * 26), opacity: 0, filter: 'blur(6px)' },
-                    { x: 0, opacity: 1, filter: 'blur(0px)', stagger: 0.055, immediateRender: false, clearProps: 'filter' },
+                const dir = el.dataset.slide === 'right' ? 1 : -1;
+                track(
+                    gsap.from(items, {
+                        x: (i) => dir * (26 + (i % 3) * 14),
+                        opacity: 0,
+                        filter: 'blur(5px)',
+                        duration: 0.75,
+                        ease: 'power3.out',
+                        stagger: 0.055,
+                        clearProps: 'filter',
+                        scrollTrigger: { trigger: el, start: START, once: true },
+                    }),
                 );
             });
 
+            /* Скролл-привязанные эффекты (scrub) ничего не прячут, поэтому им страховка не нужна */
             root.querySelectorAll('[data-parallax]').forEach((el) => {
                 const amount = parseFloat(el.dataset.parallax) || 8;
                 gsap.fromTo(
@@ -107,8 +125,17 @@ export default function useSectionMotion(scope, deps = []) {
                 );
             });
 
-            // после ленивых картинок/шрифтов позиции меняются: пересчёт
+            // после ленивых картинок и шрифтов позиции меняются: пересчёт
             ScrollTrigger.refresh();
+
+            // Страховка: всё, что через 6 с так и не проигралось, доводим до конца принудительно
+            const failsafe = window.setTimeout(() => {
+                pending.forEach((t) => {
+                    if (t && t.progress() === 0) t.progress(1).kill();
+                });
+            }, FAILSAFE_MS);
+
+            return () => window.clearTimeout(failsafe);
         },
         { scope, dependencies: deps, revertOnUpdate: true },
     );

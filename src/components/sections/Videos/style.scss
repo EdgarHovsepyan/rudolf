@@ -1,4 +1,14 @@
 .videos {
+  /* Единственный кикер на странице: он отделяет академический блок от эстрадного выше */
+  &__kicker {
+    font-family: var(--font-ui);
+    font-size: var(--fs-caption);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 0.6rem;
+  }
+
   &__grid {
     display: grid;
     gap: clamp(1.25rem, 1rem + 1.5vw, 2rem);
@@ -9,10 +19,12 @@
     grid-column: 1 / -1;
   }
 
+  /* 21rem даёт максимум три колонки на контейнере 76rem: пять роликов ложатся 3+2,
+     а не 4+1 с одинокой карточкой и дырой в пол-экрана. */
   &__list {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
     gap: clamp(1.25rem, 1rem + 1.5vw, 2rem);
   }
 

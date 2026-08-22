@@ -20,8 +20,8 @@ const Home = () => {
         <div ref={scope}>
             <Hero />
             <Intro />
-            <Occasions />
             <Music />
+            <Occasions />
             <VideoBand />
             <Repertoire />
             <Videos />

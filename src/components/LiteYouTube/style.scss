@@ -51,6 +51,9 @@
     }
   }
 
+  /* Кнопка воспроизведения: три слоя — кольцо-ореол, стеклянная подложка и ядро.
+     Ореол расходится при наведении, ядро подсвечивается акцентом. Одна и та же
+     кнопка на всех роликах, включая большую концертную запись. */
   &__play {
     position: relative;
     z-index: 1;
@@ -59,21 +62,57 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    background: var(--ink);
     color: var(--ink-on-accent);
-    box-shadow: 0 0 0 0 oklch(1 0 0 / 0.25);
-    transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+    background: oklch(1 0 0 / 0.14);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform var(--dur) var(--ease-out);
+
+    /* Ореол */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -0.55rem;
+      border-radius: 50%;
+      border: 1px solid oklch(1 0 0 / 0.35);
+      opacity: 0.7;
+      transition: transform var(--dur-slow) var(--ease-out), opacity var(--dur-slow) var(--ease-out);
+    }
+
+    /* Ядро */
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0.4rem;
+      border-radius: 50%;
+      background: var(--ink);
+      transition: background-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+    }
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      position: relative;
+      z-index: 1;
+      width: 1.35rem;
+      height: 1.35rem;
       transform: translateX(2px);
     }
 
     .yt__poster:hover &,
     .yt__poster:focus-visible & {
-      transform: scale(1.06);
-      box-shadow: 0 0 0 10px oklch(1 0 0 / 0.12);
+      transform: scale(1.05);
+
+      &::before {
+        transform: scale(1.18);
+        opacity: 0;
+      }
+
+      &::after {
+        background: var(--accent-soft);
+      }
+    }
+
+    .yt__poster:active & {
+      transform: scale(0.96);
     }
   }
 
