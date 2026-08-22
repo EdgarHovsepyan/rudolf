@@ -110,6 +110,36 @@ ${ROUTES.map(
 `.replace('http://www.w3.org/1999/sitemap/0.9', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 writeFileSync(resolve(dist, 'sitemap.xml'), sitemap, 'utf8');
 
+/* Манифест собираем здесь, а не кладём статикой: start_url и scope зависят от
+   BASE_PATH (на GitHub Pages сайт живёт в подпапке). Ссылку человек чаще всего
+   получает в мессенджере с телефона, и «добавить на главный экран» тут уместно. */
+writeFileSync(
+    resolve(dist, 'manifest.webmanifest'),
+    JSON.stringify(
+        {
+            name: `${NAME} — вокалист на праздник`,
+            short_name: NAME,
+            description: 'Живой вокал на свадьбу, юбилей и корпоратив в Москве и области.',
+            lang: 'ru',
+            dir: 'ltr',
+            start_url: base,
+            scope: base,
+            display: 'standalone',
+            orientation: 'portrait',
+            background_color: '#07081a',
+            theme_color: '#07081a',
+            categories: ['music', 'entertainment'],
+            icons: [
+                { src: `${base}icon-192.png`, sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+                { src: `${base}icon-512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
+            ],
+        },
+        null,
+        2,
+    ),
+    'utf8',
+);
+
 writeFileSync(
     resolve(dist, 'robots.txt'),
     `User-agent: *
