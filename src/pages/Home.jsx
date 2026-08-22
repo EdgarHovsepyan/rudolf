@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Hero from '../components/Hero';
 import Intro from '../components/sections/Intro';
 import Occasions from '../components/sections/Occasions';
+import Music from '../components/sections/Music';
 import VideoBand from '../components/sections/VideoBand';
 import Repertoire from '../components/sections/Repertoire';
 import Videos from '../components/sections/Videos';
@@ -20,6 +21,7 @@ const Home = () => {
             <Hero />
             <Intro />
             <Occasions />
+            <Music />
             <VideoBand />
             <Repertoire />
             <Videos />

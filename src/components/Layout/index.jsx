@@ -3,7 +3,8 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import StickyCta from '../StickyCta';
-import AudioPlayer from '../AudioPlayer';
+import PlayerDock from '../PlayerDock';
+import PlayerProvider from '../PlayerProvider';
 import PageTransition from '../PageTransition';
 
 /* Прокрутка: к якорю при наличии #hash (с повтором, пока секция грузится), иначе наверх. */
@@ -34,7 +35,9 @@ const ScrollManager = () => {
 };
 
 const Layout = () => (
-    <>
+    // Плеер живёт над роутером: один <audio> на весь сайт, поэтому запись
+    // не обрывается при переходе между страницами.
+    <PlayerProvider>
         <a className="skip-link" href="#main">
             К содержанию
         </a>
@@ -48,8 +51,8 @@ const Layout = () => (
         </main>
         <Footer />
         <StickyCta />
-        <AudioPlayer />
-    </>
+        <PlayerDock />
+    </PlayerProvider>
 );
 
 export default Layout;

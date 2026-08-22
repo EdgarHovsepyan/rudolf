@@ -86,7 +86,7 @@ const Rain = ({ count = 700, area = [26, 18, 10], color = '#bcd4ff', mouse }) =>
     });
 
     return (
-        <points frustumCulled={false}>
+        <points frustumCulled={false} renderOrder={8}>
             <bufferGeometry>
                 <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3} />
                 <bufferAttribute attach="attributes-aSpeed" array={speeds} count={count} itemSize={1} />

@@ -96,11 +96,19 @@ const Scene = () => {
                         onFallback={() => setDpr(1)}
                     />
                     <BackgroundText isMobile={isMobile} reduced={reduced} mouse={mouse} rtSize={tier.rt} />
+                    {/* Артист — плоский вырез внутри звёздной сферы, поэтому часть звёзд
+                        геометрически оказывается перед ним, и фигура выглядит просвечивающей.
+                        Отключаем depth-тест и задаём явный порядок отрисовки:
+                        небо (-1) → звёзды (0) → артист (5) → дождь (8) → имя (10). */}
                     <Image
                         scale={isMobile ? [14, 28] : [15, 30]}
                         position={isMobile ? [0, -7, -5] : [photoX, -2.5, -5]}
                         url={PHOTO}
                         transparent
+                        renderOrder={5}
+                        material-depthTest={false}
+                        material-depthWrite={false}
+                        material-toneMapped={false}
                     />
                     <Sky />
                     {!reduced && <Rain count={tier.rain} mouse={mouse} />}

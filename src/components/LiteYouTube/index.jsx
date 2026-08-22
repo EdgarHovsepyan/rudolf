@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiPlay } from 'react-icons/fi';
+import { stopAudio } from '../../lib/player';
 import './style.scss';
 
 /**
@@ -23,7 +24,7 @@ const LiteYouTube = ({ id, title, meta }) => {
                         loading="lazy"
                     />
                 ) : (
-                    <button type="button" className="yt__poster" onClick={() => setActive(true)} aria-label={`Смотреть: ${title}`}>
+                    <button type="button" className="yt__poster" onClick={() => { stopAudio(); setActive(true); }} aria-label={`Смотреть: ${title}`}>
                         <img src={thumb} alt="" loading="lazy" width="480" height="360" />
                         <span className="yt__play" aria-hidden="true">
                             <FiPlay />

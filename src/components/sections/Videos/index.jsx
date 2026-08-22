@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { FiPlay } from 'react-icons/fi';
 import LiteYouTube from '../../LiteYouTube';
 import { videos } from '../../../content/site';
+import { stopAudio } from '../../../lib/player';
 import './style.scss';
 
 /* Концертная запись с оркестром: постер, по клику подключаем видео (25 МБ грузится только по запросу) */
@@ -10,6 +11,7 @@ const FeaturedVideo = ({ src, poster, title, meta }) => {
     const ref = useRef(null);
 
     const start = () => {
+        stopAudio(); // одно «место звучания»: запись со звуком глушит аудио-плеер
         setActive(true);
         requestAnimationFrame(() => ref.current?.play().catch(() => {}));
     };

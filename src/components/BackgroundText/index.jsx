@@ -44,20 +44,21 @@ const BackgroundText = ({ isMobile, reduced, mouse, rtSize = 512 }) => {
     };
 
     return (
+        // renderOrder задаётся на каждом объекте: у <group> он не наследуется — группа сама не рисуется
         <group position={textPosition}>
             {/* Слой 1: градиентная заливка + контур */}
-            <Text {...common} outlineWidth="3.5%" outlineColor="#070a1f" outlineOpacity={0.9} outlineBlur="2%">
+            <Text {...common} renderOrder={10} outlineWidth="3.5%" outlineColor="#070a1f" outlineOpacity={0.9} outlineBlur="2%">
                 {common.children}
-                <meshBasicMaterial toneMapped={false}>
+                <meshBasicMaterial toneMapped={false} depthTest={false}>
                     {/* whitesmoke → ледяной → небесный → электрик: холодный хром с синим отливом */}
                     <GradientTexture attach="map" stops={[0, 0.36, 0.68, 1]} colors={['#f5f5f7', '#dce9ff', '#8ab8ff', '#3b78f5']} size={256} />
                 </meshBasicMaterial>
             </Text>
 
             {/* Слой 2: блеск бриллианта (аддитивно, чуть ближе к камере) */}
-            <Text {...common} position={[0, 0, 0.06]}>
+            <Text {...common} position={[0, 0, 0.06]} renderOrder={11}>
                 {common.children}
-                <meshBasicMaterial color={SPARKLE_TINT} transparent depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false}>
+                <meshBasicMaterial color={SPARKLE_TINT} transparent depthTest={false} depthWrite={false} blending={THREE.AdditiveBlending} toneMapped={false}>
                     <RenderTexture attach="map" width={rtSize} height={rtSize} samples={isMobile ? 0 : 2}>
                         <Environment resolution={128}>
                             <Lightformer form="rect" intensity={5} color="#fff4dc" position={[0, 8, -6]} scale={[14, 6, 1]} target={[0, 0, 10]} />
