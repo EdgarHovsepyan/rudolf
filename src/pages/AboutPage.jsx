@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { FiPhone, FiPrinter, FiMail } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa6';
 import { bio, contacts, site } from '../content/site';
 import useReveal from '../hooks/useReveal';
 import useSectionMotion from '../hooks/useSectionMotion';
+import usePageMeta from '../hooks/usePageMeta';
 import portrait1600 from '../assets/gallery/webp/1-1600.webp';
 import portrait800 from '../assets/gallery/webp/1-800.webp';
 import stage1600 from '../assets/gallery/webp/5-1600.webp';
@@ -18,12 +19,10 @@ const AboutPage = () => {
     const scope = useRef(null);
     useReveal();
     useSectionMotion(scope);
-    useEffect(() => {
-        document.title = `Обо мне: ${bio.title}, баритон`;
-        return () => {
-            document.title = site.title;
-        };
-    }, []);
+    usePageMeta(
+        `Биография, образование и награды — ${site.name}, баритон`,
+        'МГПИ им. Ипполитова-Иванова (класс Р.П. Лисициана), Тверской музыкальный колледж, премия С.Я. Лемешева, лауреат международных конкурсов, гастроли фонда Владимира Спивакова во Франции и Бельгии.',
+    );
 
     return (
         <article className="about-page" ref={scope}>

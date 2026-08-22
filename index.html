@@ -26,6 +26,10 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Превью роликов приходят с доменов YouTube: заранее открываем соединение -->
+    <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+
     <link rel="preload" href="/fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/golos-text-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/golos-text-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -50,6 +54,72 @@
           "Лауреат I степени, XI Международный конкурс «Романтизм. Истоки и горизонты» (2019)",
           "Лауреат I степени, конкурс-фестиваль им. М.М. Ипполитова-Иванова (2020)"
         ]
+      }
+    </script>
+
+    <!--
+      Услуга: по ней поиск понимает, ЧТО заказывают и ГДЕ. Рейтинг и отзывы
+      намеренно не размечаем: настоящих отзывов нет, а выдумывать AggregateRating
+      нельзя ни по правилам поиска, ни по совести.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Живой вокал на праздник",
+        "serviceType": "Выступление вокалиста на мероприятии",
+        "description": "Живое выступление баритона на свадьбе, юбилее, дне рождения и корпоративе. Программа собирается под событие: от классики до эстрады, без фонограммы.",
+        "provider": { "@type": "Person", "name": "Рудольф Овсепян", "telephone": "+79040070454" },
+        "areaServed": [
+          { "@type": "City", "name": "Москва" },
+          { "@type": "AdministrativeArea", "name": "Московская область" }
+        ],
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "servicePhone": { "@type": "ContactPoint", "telephone": "+79040070454", "contactType": "Бронирование выступления", "availableLanguage": ["ru"] }
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Форматы выступлений",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Свадьба" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Юбилей и семейный праздник" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "День рождения" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Корпоратив, в том числе новогодний" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Концерт с академической программой" } }
+          ]
+        }
+      }
+    </script>
+
+    <!-- Записи: длительности реальные, взяты из самих файлов -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MusicPlaylist",
+        "name": "Записи Рудольфа Овсепяна",
+        "numTracks": 5,
+        "track": [
+          { "@type": "MusicRecording", "name": "Твои следы", "duration": "PT4M58S", "byArtist": { "@type": "Person", "name": "Рудольф Овсепян" }, "composer": { "@type": "Person", "name": "Арно Бабаджанян" } },
+          { "@type": "MusicRecording", "name": "Благодарю тебя", "duration": "PT3M57S", "byArtist": { "@type": "Person", "name": "Рудольф Овсепян" }, "composer": { "@type": "Person", "name": "Арно Бабаджанян" } },
+          { "@type": "MusicRecording", "name": "Город, которого нет", "duration": "PT4M4S", "byArtist": { "@type": "Person", "name": "Рудольф Овсепян" }, "composer": { "@type": "Person", "name": "Игорь Корнелюк" } },
+          { "@type": "MusicRecording", "name": "Она не твоя", "duration": "PT1M12S", "byArtist": { "@type": "Person", "name": "Рудольф Овсепян" }, "composer": { "@type": "Person", "name": "Григорий Лепс" } },
+          { "@type": "MusicRecording", "name": "Звёздочка моя ясная", "duration": "PT53S", "byArtist": { "@type": "Person", "name": "Рудольф Овсепян" }, "composer": { "@type": "Person", "name": "ВИА «Цветы»" } }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "Рудольф Овсепян с симфоническим оркестром",
+        "description": "Концертная запись выступления баритона Рудольфа Овсепяна с симфоническим оркестром.",
+        "thumbnailUrl": "https://edgarhovsepyan.github.io/rudolf/video/orchestra-poster.webp",
+        "contentUrl": "https://edgarhovsepyan.github.io/rudolf/video/orchestra-full.mp4",
+        "duration": "PT5M18S",
+        "uploadDate": "2026-08-19",
+        "inLanguage": "ru"
       }
     </script>
   </head>

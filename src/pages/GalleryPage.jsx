@@ -4,6 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa6';
 import { contacts, gallery, site } from '../content/site';
 import { gsap, useGSAP, reducedMotion } from '../lib/gsap';
 import useSectionMotion from '../hooks/useSectionMotion';
+import usePageMeta from '../hooks/usePageMeta';
 import './gallery.scss';
 
 /* Все варианты картинок собираются на этапе сборки: новые фото + три старые настоящие */
@@ -80,12 +81,10 @@ const GalleryPage = () => {
     const [active, setActive] = useState(-1);
     useSectionMotion(rootRef);
 
-    useEffect(() => {
-        document.title = `Галерея: ${site.name}, баритон`;
-        return () => {
-            document.title = site.title;
-        };
-    }, []);
+    usePageMeta(
+        `Фотографии с концертов и праздников — ${site.name}`,
+        'Фотогалерея баритона Рудольфа Овсепяна: концерты с симфоническим оркестром, филармонические сцены, праздничные площадки и портреты со сцены.',
+    );
 
     // Плитки: шторка снизу вверх + лёгкое приближение; колонки едут с разной скоростью
     useGSAP(
