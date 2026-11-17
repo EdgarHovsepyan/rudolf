@@ -1,0 +1,18 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 480
+PlayResY: 1200
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: label_1,Sans,124,&H0029D6F7,&H0000FFFF,&H006D243E,&H006D243E,-1,0,0,0,100,100,0,8,3,8,0,5,0,0,0,1
+Style: title_2,Sans,80,&H008A2C4D,&H0000FFFF,&H00326FAD,&H00000000,0,0,0,0,100,100,0,-0,1,2,0,5,0,0,0,1
+Style: label_3,Sans,57,&H004F7CA1,&H0000FFFF,&H00323573,&H00000000,0,0,0,0,100,100,0,-2,1,1,0,5,0,0,0,1
+Style: label_4,Sans,100,&H0039477C,&H0000FFFF,&H006B879D,&H00000000,0,0,0,0,100,100,0,-1,1,1,0,5,0,0,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 1,0:00:00.00,0:00:00.20,label_1,,0,0,0,,{\pos(370,257)}O
+Dialogue: 1,0:00:00.30,0:00:02.60,title_2,,0,0,0,,{\pos(290,43)}OLYMPUS
+Dialogue: 1,0:00:00.30,0:00:01.50,label_3,,0,0,0,,{\pos(291,104)}SUPER SCATER
+Dialogue: 1,0:00:01.50,0:00:02.60,label_4,,0,0,0,,{\pos(294,111)}JUPER

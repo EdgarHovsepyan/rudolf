@@ -1,0 +1,10 @@
+{
+  "frames": {
+    "00": {"answer": "light", "p": {"light": 0.7, "transition_mid": 0.3}},
+    "01": {"answer": "move_start", "p": {"move_start": 0.6, "extreme": 0.4}},
+    "02": {"answer": "move_end", "p": {"move_end": 0.7, "expression": 0.3}},
+    "04": {"answer": "enter", "p": {"enter": 0.7, "light": 0.3}},
+    "05": {"answer": "light", "p": {"light": 0.6, "transition_mid": 0.4}}
+  },
+  "missing": ["01-02"]
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=720, height=1800" />
+    <title>Thunder God Reconstruction</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 720px; height: 1800px; overflow: hidden; background: #050b1f; }
+      #root { position: relative; width: 100%; height: 100%; }
+      .clip { position: absolute; inset: 0; width: 720px; height: 1800px; display: block; }
+      #sky { z-index: 0; }
+      #hero { z-index: 1; }
+      #strike1 { z-index: 2; }
+      #strike2 { z-index: 2; }
+      #bloom1 { z-index: 3; }
+      #bloom2 { z-index: 3; }
+    </style>
+    <script src="assets/motion.js"></script>
+    <script src="assets/rig.js"></script>
+    <script src="assets/scene.js"></script>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <radialGradient id="gBloomHF" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#e8fbff" stop-opacity=".9"/><stop offset="1" stop-color="#9fe8ff" stop-opacity="0"/></radialGradient>
+        <filter id="fStrikeHF" x="-50%" y="-10%" width="200%" height="120%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+    </svg>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="3" data-fps="30" data-width="720" data-height="1800" data-no-timeline>
+      <svg id="sky" class="clip" data-start="0" data-duration="3" data-track-index="0" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"><g id="skyG"></g></svg>
+      <svg id="hero" class="clip" data-start="0" data-duration="3" data-track-index="1" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"></svg>
+      <svg id="strike1" class="clip strike" data-start="0.5" data-duration="0.1667" data-track-index="2" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"><path class="bolt" fill="none" stroke="#f4fdff" stroke-width="5" stroke-linejoin="round" filter="url(#fStrikeHF)"/></svg>
+      <svg id="strike2" class="clip strike" data-start="2.5333" data-duration="0.1667" data-track-index="4" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"><path class="bolt" fill="none" stroke="#f4fdff" stroke-width="5" stroke-linejoin="round" filter="url(#fStrikeHF)"/></svg>
+      <svg id="bloom1" class="clip bloom" data-start="0.6667" data-duration="0.2" data-track-index="3" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"><ellipse class="glow" cx="240" cy="560" rx="260" ry="420" fill="url(#gBloomHF)"/><rect class="white" width="480" height="1200" fill="#eaf9ff" opacity="0"/></svg>
+      <svg id="bloom2" class="clip bloom" data-start="2.6333" data-duration="0.2" data-track-index="5" viewBox="0 0 480 1200" xmlns="http://www.w3.org/2000/svg"><ellipse class="glow" cx="240" cy="560" rx="260" ry="420" fill="url(#gBloomHF)"/><rect class="white" width="480" height="1200" fill="#eaf9ff" opacity="0"/></svg>
+    </div>
+    <script>
+      // Deterministic per-frame state from time alone (seeked by HyperFrames via the hf-seek event).
+      const S = window.ThunderScene, RIG = window.ThunderRig, MO = window.MOTION;
+      S.backdrop(document.getElementById('skyG'), 'full');
+      const parts = RIG.build(document.getElementById('hero'), { skeleton: false });
+      const STRIKES = [{"id": "strike1", "start": 15, "peak": 17, "end": 19}, {"id": "strike2", "start": 76, "peak": 78, "end": 80}];
+      const BLOOMS = [{"id": "bloom1", "start": 20, "end": 25}, {"id": "bloom2", "start": 79, "end": 84}];
+      function render(t) {
+        const f = Math.max(0, Math.min(MO.n - 1, Math.round(t * MO.fps)));
+        const out = RIG.render(parts, f, {});
+        const sky = document.getElementById('sky');
+        sky.querySelectorAll('#clouds .cl').forEach((c) => { const i = +c.dataset.i; c.setAttribute('transform', `translate(${(Math.sin(f / 30 * 0.7 + i) * 6 - f * 0.25 * (i % 3 + 1)).toFixed(2)},${(Math.cos(f / 30 * 0.9 + i) * 3).toFixed(2)})`); });
+        sky.querySelectorAll('#hiClouds .ch').forEach((c) => { const i = +c.dataset.i; c.setAttribute('transform', `translate(${(-f * 0.15 * (i % 2 + 1)).toFixed(2)},0)`); });
+        sky.querySelector('#rays').setAttribute('opacity', (0.08 + 0.10 * out.power + 0.04 * RIG.noise1(f / 5, 2)).toFixed(3));
+        const j = out.joints;
+        const cx = (j.l_shoulder[0] + j.r_shoulder[0]) / 2, cy = (j.l_shoulder[1] + j.r_shoulder[1]) / 2;
+        for (const s of STRIKES) {
+          const p = document.querySelector('#' + s.id + ' .bolt');
+          const on = f >= s.start && f <= s.end;
+          p.setAttribute('d', on ? S.strikePath(s.start * 17 + f, cx + 30, -20, cx, cy + 40) : '');
+          p.setAttribute('opacity', f === s.peak ? 1 : 0.75);
+        }
+        const b = S.bloomAt(f);
+        for (const s of BLOOMS) {
+          const g = document.querySelector('#' + s.id + ' .glow');
+          g.setAttribute('cx', cx.toFixed(1)); g.setAttribute('cy', (j.pelvis[1] - 60).toFixed(1));
+          g.setAttribute('opacity', Math.min(1, b * 1.15).toFixed(3));
+          document.querySelector('#' + s.id + ' .white').setAttribute('opacity', Math.max(0, Math.min(0.5, (b - 0.55) * 0.9)).toFixed(3));
+        }
+      }
+      window.addEventListener('hf-seek', (e) => render(e.detail.time));
+      render(0);
+    </script>
+  </body>
+</html>

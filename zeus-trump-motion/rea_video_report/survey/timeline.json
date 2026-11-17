@@ -1,0 +1,201 @@
+{
+  "version": 1,
+  "source": {
+    "path": "/tmp/claude-0/-home-user-rudolf/72604a1f-a30f-524d-a35b-759994d6c323/scratchpad/deliver/original_excerpt.mp4",
+    "duration": 3.0,
+    "size": [
+      480,
+      1200
+    ],
+    "fps": 30.0
+  },
+  "rounds": 1,
+  "shots_estimate": {
+    "answer": 1,
+    "range": [
+      1,
+      1
+    ]
+  },
+  "shots": 3,
+  "cuts": [
+    {
+      "t": 0.667,
+      "frame": 20,
+      "kind": "cut",
+      "span": [
+        0.667,
+        0.667
+      ],
+      "p": 0.532,
+      "by": "tool"
+    },
+    {
+      "t": 2.633,
+      "frame": 79,
+      "kind": "cut",
+      "span": [
+        2.633,
+        2.633
+      ],
+      "p": 0.568,
+      "by": "tool"
+    }
+  ],
+  "looks": [
+    {
+      "span": [
+        0.001,
+        2.999
+      ],
+      "answer": "anim_2d",
+      "p": {
+        "anim_2d": 0.8,
+        "cg_3d": 0.15,
+        "code_render": 0.05
+      },
+      "by": ""
+    }
+  ],
+  "busy": [
+    [
+      0.188,
+      0.562
+    ],
+    [
+      0.562,
+      0.938
+    ],
+    [
+      0.938,
+      1.312
+    ],
+    [
+      1.312,
+      1.688
+    ],
+    [
+      2.062,
+      2.438
+    ],
+    [
+      2.438,
+      2.812
+    ]
+  ],
+  "rhythm": {
+    "shot_lengths": [
+      0.667,
+      1.966,
+      0.367
+    ],
+    "mean_shot_s": 1.0,
+    "cuts_per_min": 40.0,
+    "change_step_s": 0.25,
+    "change": [
+      0.24,
+      0.32,
+      0.37,
+      0.4,
+      0.09,
+      0.15,
+      0.12,
+      0.07,
+      0.06,
+      0.15,
+      0.37,
+      0.39
+    ]
+  },
+  "keyframes": {
+    "1": [
+      {
+        "frame": 0,
+        "role": "first",
+        "by": "tool",
+        "t": 0.0
+      },
+      {
+        "frame": 14,
+        "role": "change",
+        "by": "tool",
+        "t": 0.467
+      },
+      {
+        "frame": 17,
+        "role": "change",
+        "by": "tool",
+        "t": 0.567
+      },
+      {
+        "frame": 19,
+        "role": "last",
+        "by": "tool",
+        "t": 0.633
+      }
+    ],
+    "2": [
+      {
+        "frame": 20,
+        "role": "light",
+        "p": 0.7,
+        "by": "ai",
+        "t": 0.667
+      },
+      {
+        "frame": 36,
+        "role": "move_start",
+        "p": 0.6,
+        "by": "ai",
+        "t": 1.2
+      },
+      {
+        "frame": 49,
+        "role": "missed",
+        "by": "ai+tool",
+        "t": 1.633
+      },
+      {
+        "frame": 51,
+        "role": "move_end",
+        "p": 0.7,
+        "by": "ai",
+        "t": 1.7
+      },
+      {
+        "frame": 76,
+        "role": "enter",
+        "p": 0.7,
+        "by": "ai",
+        "t": 2.533
+      },
+      {
+        "frame": 78,
+        "role": "light",
+        "p": 0.6,
+        "by": "ai",
+        "t": 2.6
+      }
+    ],
+    "3": [
+      {
+        "frame": 79,
+        "role": "first",
+        "by": "tool",
+        "t": 2.633
+      },
+      {
+        "frame": 87,
+        "role": "change",
+        "by": "tool",
+        "t": 2.9
+      },
+      {
+        "frame": 89,
+        "role": "last",
+        "by": "tool",
+        "t": 2.967
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "text": [
+    {
+      "id": "text_001",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 0.2,
+      "text": "O",
+      "bbox": [
+        0.6375,
+        0.1592,
+        0.2646,
+        0.1092
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#f7d629",
+        "stroke_name": "orange",
+        "stroke": "#ad722a",
+        "stroke_ratio": 0.029,
+        "box": true,
+        "box_name": "purple",
+        "box_color": "#3e246d",
+        "weight": 0.321
+      },
+      "style_zh": "yellow text, orange outline, purple box, bold, line height 10.9% (about 131px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_002",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.3,
+      "t1": 2.6,
+      "text": "OLYMPUS",
+      "bbox": [
+        0.2229,
+        0.0,
+        0.7625,
+        0.0717
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#4d2c8a",
+        "stroke_name": "yellow",
+        "stroke": "#ad6f32",
+        "stroke_ratio": 0.018,
+        "multicolor": true,
+        "highlight_name": "yellow",
+        "weight": 0.094
+      },
+      "style_zh": "yellow text, yellow outline, keywords highlighted in yellow, line height 7.0% (about 84px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_003",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.3,
+      "t1": 1.5,
+      "text": "SUPER SCATER",
+      "bbox": [
+        0.2292,
+        0.0225,
+        0.7521,
+        0.1283
+      ],
+      "style": {
+        "fill_name": "orange",
+        "fill": "#a17c4f",
+        "stroke_name": "red",
+        "stroke": "#733532",
+        "stroke_ratio": 0.009,
+        "multicolor": true,
+        "highlight_name": "yellow",
+        "weight": 0.038
+      },
+      "style_zh": "orange text, red outline, keywords highlighted in yellow, line height 11.3% (about 135px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_004",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 1.5,
+      "t1": 2.6,
+      "text": "JUPER",
+      "bbox": [
+        0.2667,
+        0.0392,
+        0.6917,
+        0.1058
+      ],
+      "style": {
+        "fill_name": "brown",
+        "fill": "#7c4739",
+        "stroke_name": "orange",
+        "stroke": "#9d876b",
+        "stroke_ratio": 0.012,
+        "multicolor": true,
+        "highlight_name": "grey",
+        "weight": 0.046
+      },
+      "style_zh": "brown text, orange outline, keywords highlighted in grey, line height 8.8% (about 105px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": true,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    }
+  ],
+  "stickers": [],
+  "sfx": []
+}

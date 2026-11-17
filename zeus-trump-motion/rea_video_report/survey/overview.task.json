@@ -1,0 +1,135 @@
+{
+  "id": "overview",
+  "round": 1,
+  "images": [
+    "survey/overview.jpg"
+  ],
+  "instructions": "你是视频节奏审阅员。图里是按时间等距排开的帧，每格左上角是编号和时间；格子之间叫 gap，\n编号 gNN 表示第 NN 格和下一格之间。格子底部的橙色条是这段里画面变化有多大（越长越大），右边红色竖线 + CUT 表示切镜检测器在这段里找到了切点。\n\n按 JEV 格式回答：只回 JSON，不写解释。\n- gaps：每个 gap 从 criteria 里选一项，写成 {\"answer\": 选项, \"p\": {选项: 概率, ...}}；是 \"same\" 的 gap 不用写，但画了红线的 gap 必须写。\n- 选 cut / transition 的，再加 \"kind\"（从 kinds 里选）。一个转场跨几个 gap 时，这几个 gap 的 kind 写成一样；\n  紧接着又是另一个转场（A 变成 B，B 马上又变成 C），换一个 kind，或者在 B 停留的那格写 busy。\n- source：按底层画面的制作方式分段（格子编号范围 + 选项 + 概率）。\n- 拿不准就选 unsure，会在那里加密抽帧再看一轮；不要猜。\n- 宁可多报 transition / unsure，也不要漏掉换场景的地方：每个场景的第一帧都是关键帧。",
+  "state": {
+    "duration": 3.0,
+    "tiles": 8,
+    "every": 0.375,
+    "times": [
+      0.188,
+      0.562,
+      0.938,
+      1.312,
+      1.688,
+      2.062,
+      2.438,
+      2.812
+    ],
+    "tool_cuts": [
+      0.667,
+      2.633
+    ],
+    "tool_cut_gaps": [
+      "g01",
+      "g06"
+    ]
+  },
+  "questions": {
+    "shots_estimate": {
+      "type": "integer",
+      "instructions": "整条视频大约有多少个镜头 / 场景（数换场景的次数 + 1）；同时给 range"
+    },
+    "gaps": {
+      "type": "choice",
+      "per": "gap",
+      "ids": [
+        "g00",
+        "g01",
+        "g02",
+        "g03",
+        "g04",
+        "g05",
+        "g06"
+      ],
+      "criteria": {
+        "same": "同一个镜头在继续：画面延续，只有小幅运动",
+        "busy": "同一个镜头，但这段里画面变化很多（动作、元素进出、形变），要多抽关键帧",
+        "cut": "这段里换了镜头 / 场景，是一刀硬切",
+        "transition": "这段里换了场景，但不是硬切：形变、叠化、推拉进出、划像、甩镜等，过程要细看",
+        "unsure": "看不出来，要在这段加密抽帧再看"
+      },
+      "kinds": {
+        "cut": "硬切",
+        "dissolve": "叠化",
+        "morph": "形变：上一画面的图形直接变成下一画面",
+        "zoom": "推进 / 拉出进入新画面",
+        "wipe": "划像",
+        "slide": "推移",
+        "whip": "甩镜",
+        "fade": "经黑场 / 白场",
+        "match": "匹配剪辑（形状或动作接上）",
+        "effect": "其他转场特效"
+      }
+    },
+    "source": {
+      "type": "choice",
+      "per": "segment",
+      "criteria": {
+        "live_action": "真实摄像机 / 手机实拍",
+        "ai_video": "AI 生成视频（形变、纹理闪烁、物理不合理）",
+        "avatar": "数字人口播",
+        "cg_3d": "3D 渲染（Blender / C4D / UE，几何干净、光影一致）",
+        "code_render": "代码 / 模板渲染：MG 动效、矢量图形、粒子、图表、按参数生成的动画（含手绘质感的矢量动画）",
+        "screen_capture": "录屏 / 截图",
+        "still_motion": "一张静图推拉",
+        "static_hold": "静帧",
+        "anim_2d": "2D 逐帧手绘 / 骨骼动画",
+        "stop_motion": "定格动画（实物逐帧拍）",
+        "film_footage": "剪进来的影视片段"
+      },
+      "instructions": "按底层画面的制作方式把整条视频分段，tiles 写格子编号范围（如 \"00-12\"）；整条是同一种就写一段。看整片的一致性：同一套底纹、描边、配色贯穿全片，通常是同一种做法"
+    }
+  },
+  "answer_template": {
+    "shots_estimate": {
+      "answer": null,
+      "range": [
+        null,
+        null
+      ]
+    },
+    "gaps": {},
+    "source": [
+      {
+        "tiles": "00-NN",
+        "answer": null,
+        "p": {}
+      }
+    ]
+  },
+  "gap_times": {
+    "g00": [
+      0.188,
+      0.562
+    ],
+    "g01": [
+      0.562,
+      0.938
+    ],
+    "g02": [
+      0.938,
+      1.312
+    ],
+    "g03": [
+      1.312,
+      1.688
+    ],
+    "g04": [
+      1.688,
+      2.062
+    ],
+    "g05": [
+      2.062,
+      2.438
+    ],
+    "g06": [
+      2.438,
+      2.812
+    ]
+  },
+  "frame_index": null
+}

@@ -7,7 +7,8 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  // zeus-trump-motion/: standalone motion-reconstruction project (browser rig + node/python tooling), not part of the site
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'zeus-trump-motion'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
