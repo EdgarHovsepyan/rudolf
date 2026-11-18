@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Thunder Win</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&family=Cinzel:wght@900&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+      #root { position: relative; width: 100%; height: 100%; }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; display: block; }
+      #sky { z-index: 0; }
+      #dim { z-index: 1; background: radial-gradient(ellipse at 50% 52%, rgba(20,12,60,0.35) 0%, rgba(6,4,20,0.82) 70%); opacity: 0; }
+      #art { z-index: 2; overflow: visible; }
+      #fx { z-index: 3; }
+      #flash { z-index: 4; background: radial-gradient(ellipse at 50% 48%, rgba(240,250,255,1) 0%, rgba(170,220,255,.55) 35%, rgba(120,160,255,0) 75%); opacity: 0; }
+      text { font-family: 'Cinzel Decorative', 'Cinzel', serif; font-weight: 900; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="2.5" data-fps="30" data-width="1920" data-height="1080" data-no-timeline>
+      
+      <div id="dim" class="clip" data-start="0" data-duration="2.5" data-track-index="1"></div>
+      <svg id="art" class="clip" data-start="0" data-duration="2.5" data-track-index="2" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gText" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffbe6"/><stop offset=".32" stop-color="#ffe680"/><stop offset=".52" stop-color="#f5bb34"/>
+            <stop offset=".7" stop-color="#b9701a"/><stop offset=".86" stop-color="#e9a634"/><stop offset="1" stop-color="#ffe9a0"/>
+          </linearGradient>
+          <linearGradient id="gRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fff4c2"/><stop offset=".22" stop-color="#f3c44a"/><stop offset=".45" stop-color="#8f5512"/>
+            <stop offset=".62" stop-color="#f7cf5c"/><stop offset=".8" stop-color="#a8661a"/><stop offset="1" stop-color="#ffe9a0"/>
+          </linearGradient>
+          <linearGradient id="gRingIn" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6b3c0c"/><stop offset=".5" stop-color="#e0a83c"/><stop offset="1" stop-color="#5a3209"/>
+          </linearGradient>
+          <radialGradient id="gGlass" cx=".5" cy=".42" r=".62">
+            <stop offset="0" stop-color="#4b3bb8"/><stop offset=".45" stop-color="#22176a"/><stop offset=".85" stop-color="#0b0828"/><stop offset="1" stop-color="#05040f"/>
+          </radialGradient>
+          <radialGradient id="gCore" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#e9fbff" stop-opacity=".95"/><stop offset=".35" stop-color="#7fe3ff" stop-opacity=".55"/><stop offset="1" stop-color="#3a7bff" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="gBolt" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fffbe6"/><stop offset=".4" stop-color="#ffd84d"/><stop offset=".75" stop-color="#e09a22"/><stop offset="1" stop-color="#fff0b0"/>
+          </linearGradient>
+          <linearGradient id="gPlate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d1650"/><stop offset=".55" stop-color="#0c0a2a"/><stop offset="1" stop-color="#1a1246"/>
+          </linearGradient>
+          <linearGradient id="gRay" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffe7a0" stop-opacity=".0"/><stop offset=".15" stop-color="#ffe7a0" stop-opacity=".55"/><stop offset="1" stop-color="#ffb84a" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="gCoin" cx=".38" cy=".32" r=".75">
+            <stop offset="0" stop-color="#fff7cf"/><stop offset=".35" stop-color="#ffd54a"/><stop offset=".8" stop-color="#c47f17"/><stop offset="1" stop-color="#7a4a0c"/>
+          </radialGradient>
+          <filter id="fRays" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter>
+          <filter id="fGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="fArc" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="fShadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0a0418" flood-opacity=".75"/></filter>
+          <filter id="fSlam" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur id="slamBlur" stdDeviation="0 0"/></filter>
+          <filter id="fStorm" x="0" y="0" width="100%" height="100%">
+            <feTurbulence id="stormTurb" type="fractalNoise" baseFrequency="0.009 0.012" numOctaves="4" seed="7" result="n"/>
+            <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.45  0 0 0 0 1  0 0 0 1.6 -0.55"/>
+          </filter>
+          <clipPath id="cGlass"><circle cx="0" cy="0" r="246"/></clipPath>
+          <clipPath id="cTitle"><text id="titleClip" x="0" y="0" text-anchor="middle" font-size="150" letter-spacing="4">THUNDER WIN!</text></clipPath>
+        </defs>
+        <g id="cele">
+          <g id="raysWrap" filter="url(#fRays)"><g id="rays" opacity="0"></g></g>
+          <g id="coins"></g>
+          <g id="medal">
+            <circle cx="0" cy="0" r="372" fill="url(#gCore)" opacity=".35" id="halo"/>
+            <g id="ticks"></g>
+            <circle cx="0" cy="0" r="300" fill="none" stroke="#3a1e05" stroke-width="44"/>
+            <circle cx="0" cy="0" r="300" fill="none" stroke="url(#gRing)" stroke-width="36"/>
+            <circle cx="0" cy="0" r="318" fill="none" stroke="#fff3c4" stroke-width="3" opacity=".75"/>
+            <circle cx="0" cy="0" r="282" fill="none" stroke="url(#gRingIn)" stroke-width="6"/>
+            <circle cx="0" cy="0" r="262" fill="#2a1606"/>
+            <circle cx="0" cy="0" r="252" fill="url(#gRing)"/>
+            <circle cx="0" cy="0" r="246" fill="url(#gGlass)"/>
+            <g clip-path="url(#cGlass)">
+              <rect id="storm" x="-600" y="-600" width="1200" height="1200" filter="url(#fStorm)" opacity=".55"/>
+              <circle cx="0" cy="-30" r="170" fill="url(#gCore)" id="core" opacity=".6"/>
+              <path d="M -200 -120 A 260 260 0 0 1 200 -120" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="44" stroke-linecap="round"/>
+              <path d="M -150 -200 A 230 230 0 0 1 60 -232" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="10" stroke-linecap="round"/>
+            </g>
+            <circle cx="0" cy="-10" r="150" fill="url(#gCore)" opacity=".55" id="emblemGlow"/>
+            <g id="emblem" filter="url(#fGlow)">
+              <path d="M 40 -200 L -96 18 L -14 18 L -58 176 L 104 -52 L 18 -52 L 78 -200 Z" fill="url(#gBolt)" stroke="#5a2f06" stroke-width="10" stroke-linejoin="round"/>
+              <path d="M 18 -52 L 104 -52 L -58 176 L -14 18 Z" fill="#7a4210" opacity=".38"/>
+              <path d="M 40 -200 L -96 18 L -14 18" fill="none" stroke="#fffbe6" stroke-width="4" stroke-linejoin="round" opacity=".9"/>
+            </g>
+            <g id="plate" transform="translate(0,188)">
+              <rect x="-230" y="-58" width="460" height="116" rx="58" fill="#3a1e05"/>
+              <rect x="-222" y="-50" width="444" height="100" rx="50" fill="url(#gRing)"/>
+              <rect x="-212" y="-41" width="424" height="82" rx="41" fill="url(#gPlate)"/>
+              <text id="amount" x="0" y="25" text-anchor="middle" font-size="70" fill="url(#gText)" stroke="#2a1404" stroke-width="5" paint-order="stroke" font-family="Cinzel" letter-spacing="3">0.00</text>
+            </g>
+          </g>
+          <g id="title" filter="url(#fShadow)" data-layout-allow-overlap>
+            <g filter="url(#fSlam)">
+              <g id="extrude"></g>
+              <text x="0" y="0" text-anchor="middle" font-size="150" letter-spacing="4" fill="url(#gText)" stroke="#2b1203" stroke-width="16" paint-order="stroke" stroke-linejoin="round">THUNDER WIN!</text>
+              <text x="0" y="0" text-anchor="middle" font-size="150" letter-spacing="4" fill="none" stroke="#fff6cf" stroke-width="2.5" opacity=".7">THUNDER WIN!</text>
+              <rect id="shine" x="-900" y="-150" width="220" height="200" fill="url(#gShine)" clip-path="url(#cTitle)" opacity="0" transform="skewX(-20)"/>
+            </g>
+          </g>
+          <g id="arcs" filter="url(#fArc)"></g>
+        </g>
+      </svg>
+      <canvas id="fx" class="clip" width="1920" height="1080" data-start="0" data-duration="2.5" data-track-index="3"></canvas>
+      <div id="flash" class="clip" data-start="0.5" data-duration="1.3" data-track-index="4"></div>
+    </div>
+    <script>
+      // Original "THUNDER WIN" celebration on the beats measured from the reference (REA): coins 6-14, rise 14-16,
+      // strike 16-19, count 19-28, title slam 29-33, hold 34-45, exit 46-52. Every frame is derived from time alone.
+      const N = 75, FPS = 30, CX = 960, CY = 600;
+      const $ = (id) => document.getElementById(id);
+      const NS = 'http://www.w3.org/2000/svg';
+      const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+      const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const easeOutBack = (t, s = 1.9) => 1 + (s + 1) * Math.pow(t - 1, 3) + s * Math.pow(t - 1, 2);
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      const easeInCubic = (t) => t * t * t;
+      const seg = (f, a, b) => clamp((f - a) / (b - a), 0, 1);
+      window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
+      window.__hf.buildReady.fonts = document.fonts.load('900 150px "Cinzel Decorative"').then(() => document.fonts.load('900 70px "Cinzel"')).then(() => document.fonts.ready);
+
+      // static pieces: rays, ticks, coins
+      const rays = $('rays');
+      for (let i = 0; i < 18; i++) { const p = document.createElementNS(NS, 'path'); const a = (i / 18) * Math.PI * 2, w = 0.07;
+        p.setAttribute('d', `M0,0 L${Math.cos(a - w) * 1100},${Math.sin(a - w) * 1100} L${Math.cos(a + w) * 1100},${Math.sin(a + w) * 1100} Z`);
+        p.setAttribute('fill', 'url(#gRay)'); p.setAttribute('opacity', (0.35 + 0.5 * hash(i)).toFixed(2)); rays.appendChild(p); }
+      const ticks = $('ticks');
+      for (let i = 0; i < 16; i++) { const g = document.createElementNS(NS, 'path'); const a = (i / 16) * 360;
+        g.setAttribute('d', 'M -9 -352 L 9 -352 L 4 -332 L 14 -332 L -6 -300 L -1 -322 L -12 -322 Z');
+        g.setAttribute('fill', 'url(#gRing)'); g.setAttribute('stroke', '#3a1e05'); g.setAttribute('stroke-width', '3');
+        g.setAttribute('transform', `rotate(${a})`); ticks.appendChild(g); }
+      const ex = $('extrude');
+      for (let k = 12; k >= 1; k--) { const tx = document.createElementNS(NS, 'text'); tx.setAttribute('x', 0); tx.setAttribute('y', k * 1.2); tx.setAttribute('text-anchor', 'middle');
+        tx.setAttribute('font-size', 150); tx.setAttribute('letter-spacing', 4); tx.setAttribute('fill', k > 9 ? '#1a0a02' : '#5a2c08'); tx.setAttribute('stroke', k > 9 ? '#1a0a02' : '#5a2c08');
+        tx.setAttribute('stroke-width', 16); tx.setAttribute('stroke-linejoin', 'round'); tx.textContent = 'THUNDER WIN!'; ex.appendChild(tx); }
+      const coins = $('coins'), COINS = [];
+      for (let i = 0; i < 46; i++) {
+        const g = document.createElementNS(NS, 'g');
+        g.innerHTML = '<ellipse rx="34" ry="34" fill="#6b3f08"/><ellipse rx="30" ry="30" fill="url(#gCoin)"/><ellipse rx="20" ry="20" fill="none" stroke="#a8661a" stroke-width="3"/><path d="M 4 -14 L -8 2 L 0 2 L -4 14 L 9 -3 L 1 -3 Z" fill="#fff1b0"/>';
+        coins.appendChild(g);
+        const ang = -Math.PI / 2 + (hash(i * 6.1) - 0.5) * 2.6;
+        COINS.push({ g, el: g.querySelectorAll('ellipse'), t0: 16 + hash(i * 3.3) * 28, vx: Math.cos(ang) * (900 + hash(i * 1.7) * 900), vy: Math.sin(ang) * (900 + hash(i * 2.9) * 700) - 300, ang,
+                     spin: 4 + hash(i * 5.1) * 9, ph: hash(i * 7.7) * 6.28, s: 0.7 + hash(i * 9.1) * 0.6, x0: Math.cos(ang) * 260, y0: Math.sin(ang) * 260 });
+      }
+      const fx = $('fx').getContext('2d');
+      function sizeCanvas() { const d = window.devicePixelRatio || 1; const c = $('fx'); if (c.width !== 1920 * d) { c.width = 1920 * d; c.height = 1080 * d; } return d; }
+
+      function bolt(seed, x0, y0, x1, y1, segs, amp) {
+        const pts = [[x0, y0]];
+        for (let i = 1; i < segs; i++) { const t = i / segs, nx = -(y1 - y0), ny = x1 - x0, L = Math.hypot(nx, ny) || 1, o = (hash(seed * 13 + i) * 2 - 1) * amp * Math.sin(Math.PI * t);
+          pts.push([lerp(x0, x1, t) + nx / L * o, lerp(y0, y1, t) + ny / L * o]); }
+        pts.push([x1, y1]); return pts;
+      }
+      function strokeBolt(pts, w, col, blur) {
+        fx.save(); fx.shadowColor = col; fx.shadowBlur = blur; fx.strokeStyle = col; fx.lineWidth = w; fx.lineJoin = 'round'; fx.lineCap = 'round';
+        fx.beginPath(); pts.forEach((p, i) => (i ? fx.lineTo(p[0], p[1]) : fx.moveTo(p[0], p[1]))); fx.stroke(); fx.restore();
+      }
+      function arcPathSvg(seed, x0, y0, x1, y1, segs, amp) {
+        return 'M' + bolt(seed, x0, y0, x1, y1, segs, amp).map((p) => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+      }
+
+      function renderAt(t) {
+        const f = clamp(Math.round(t * FPS), 0, N - 1);
+        const dpr = sizeCanvas();
+        // --- group motion: rise 14-16 (+overshoot to 19), exit 46-52
+        const rise = easeOutBack(seg(f, 13, 19), 1.4);
+        const exitT = easeInCubic(seg(f, 46, 52));
+        const gy = CY + lerp(820, 0, clamp(rise, 0, 1.2)) + exitT * 900;
+        const gs = 1.08 * lerp(0.55, 1, clamp(rise, 0, 1.15)) * (1 - 0.25 * exitT);
+        const shake = (f >= 16 && f <= 19) || (f >= 30 && f <= 32) ? 9 : 0;
+        const sx = (hash(f * 3.1) - 0.5) * shake, sy = (hash(f * 7.3) - 0.5) * shake;
+        $('cele').setAttribute('transform', `translate(${CX + sx},${gy + sy}) scale(${gs.toFixed(4)})`);
+        $('cele').setAttribute('opacity', (f < 13 ? 0 : 1 - seg(f, 49, 53)).toFixed(3));
+        $('dim').style.opacity = (0.9 * seg(f, 4, 14) * (1 - seg(f, 50, 60))).toFixed(3);
+        // rays + halo
+        const glow = seg(f, 17, 26) * (1 - seg(f, 46, 52));
+        $('rays').setAttribute('opacity', (0.75 * glow).toFixed(3));
+        $('rays').setAttribute('transform', `rotate(${(f * 0.9).toFixed(2)}) scale(${(0.9 + 0.1 * Math.sin(f * 0.2)).toFixed(3)})`);
+        $('halo').setAttribute('opacity', (0.25 + 0.5 * glow + 0.15 * Math.sin(f * 0.6) * glow).toFixed(3));
+        $('ticks').setAttribute('transform', `rotate(${(f * -0.6).toFixed(2)})`);
+        $('core').setAttribute('opacity', (0.35 + 0.45 * glow + (f >= 16 && f <= 20 ? 0.4 : 0)).toFixed(3));
+        $('stormTurb').setAttribute('baseFrequency', `${(0.009 + 0.0006 * Math.sin(f * 0.13)).toFixed(5)} ${(0.012 + 0.0006 * Math.cos(f * 0.11)).toFixed(5)}`);
+        $('storm').setAttribute('transform', `translate(${(-f * 2.2).toFixed(1)},${(f * 0.8).toFixed(1)})`);
+        // emblem pulse on the strike
+        const hit = f >= 16 ? Math.exp(-(f - 16) / 4) : 0;
+        $('emblem').setAttribute('transform', `scale(${(1 + 0.12 * hit).toFixed(3)})`);
+        $('emblemGlow').setAttribute('opacity', (0.35 + 0.4 * glow + 0.5 * hit).toFixed(3));
+        // amount count 19-28 (ease-out), then a small pop
+        const ct = easeOutCubic(seg(f, 19, 28));
+        $('amount').textContent = (46.35 * ct).toFixed(2);
+        const pop = f >= 28 ? Math.exp(-(f - 28) / 3) : 0;
+        $('plate').setAttribute('transform', `translate(0,188) scale(${(1 + 0.08 * pop).toFixed(3)})`);
+        // title slam 29-33: from 2.6x with motion blur to 1.0 with overshoot
+        const st = seg(f, 29, 33);
+        const tsc = f < 29 ? 0 : (st < 1 ? lerp(2.6, 0.93, easeInCubic(st)) : 1 + 0.07 * Math.exp(-(f - 33) / 1.6) * Math.cos((f - 33) * 1.6) - 0.07 * Math.exp(-(f - 33) / 1.6) + 0.0);
+        $('title').setAttribute('transform', `translate(0,-405) scale(${tsc.toFixed(4)})`);
+        $('title').setAttribute('opacity', (f < 29 ? 0 : clamp(0.35 + st, 0, 1)).toFixed(3));
+        $('slamBlur').setAttribute('stdDeviation', `${(14 * (1 - st)).toFixed(2)} ${(4 * (1 - st)).toFixed(2)}`);
+        // shine sweep 35-44
+        const sh = seg(f, 35, 44);
+        $('shine').setAttribute('x', lerp(-1100, 900, sh).toFixed(1));
+        $('shine').setAttribute('opacity', (sh > 0 && sh < 1 ? 0.85 : 0).toFixed(2));
+        // crawling arcs over title and ring during the hold
+        const arcs = $('arcs'); let html = '';
+        if (f >= 30 && f <= 47) {
+          const k = 0.5 + 0.5 * Math.sin(f * 1.7);
+          for (let i = 0; i < 5; i++) { const sd = f * 11 + i * 37, a0 = hash(sd) * 6.28, a1 = a0 + 0.5 + hash(sd + 1) * 0.8;
+            html += `<path d="${arcPathSvg(sd, Math.cos(a0) * 310, Math.sin(a0) * 310, Math.cos(a1) * 310, Math.sin(a1) * 310, 9, 26)}" stroke="#bdf3ff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="${(0.6 + 0.4 * k).toFixed(2)}"/>`; }
+          for (let i = 0; i < 3; i++) { const sd = f * 7 + i * 53, x0 = -560 + hash(sd) * 1000, y0 = -470 + hash(sd + 2) * 60;
+            html += `<path d="${arcPathSvg(sd, x0, y0, x0 + 120 + hash(sd + 3) * 200, -380 + hash(sd + 4) * 60, 8, 22)}" stroke="#d6f8ff" stroke-width="3" fill="none" stroke-linecap="round" opacity="${(0.5 + 0.5 * k).toFixed(2)}"/>`; }
+        }
+        arcs.innerHTML = html;
+        // coins: ballistic fountain from behind the medal, spinning edge-on
+        COINS.forEach((c, i) => {
+          const tt = (f - c.t0) / FPS;
+          if (tt < 0 || tt > 1.6) { c.g.setAttribute('opacity', 0); return; }
+          const x = c.x0 + c.vx * tt, y = c.y0 + c.vy * tt + 1700 * tt * tt;
+          const sx2 = Math.abs(Math.cos(c.ph + c.spin * tt)) * 0.9 + 0.1;
+          c.g.setAttribute('transform', `translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${(c.s * sx2).toFixed(3)},${c.s.toFixed(3)})`);
+          c.g.setAttribute('opacity', clamp(1.6 - tt, 0, 1).toFixed(2));
+        });
+        // --- additive canvas FX
+        fx.setTransform(dpr, 0, 0, dpr, 0, 0); fx.clearRect(0, 0, 1920, 1080); fx.globalCompositeOperation = 'lighter';
+        const top = gy - 330 * gs;
+        if (f >= 15 && f <= 20) {                               // the strike
+          const k = [0.5, 1, 1, 0.8, 0.55, 0.3][f - 15];
+          const main = bolt(f * 5 + 1, CX + 40, -40, CX + sx, top, 16, 70);
+          strokeBolt(main, 26 * k, 'rgba(120,200,255,0.55)', 60); strokeBolt(main, 9 * k, 'rgba(220,245,255,0.95)', 25); strokeBolt(main, 3, 'rgba(255,255,255,1)', 6);
+          for (let b = 0; b < 4; b++) { const p = main[3 + b * 3]; const br = bolt(f * 9 + b, p[0], p[1], p[0] + (hash(f + b) - 0.5) * 420, p[1] + 120 + hash(b * 3 + f) * 160, 8, 30);
+            strokeBolt(br, 4 * k, 'rgba(170,225,255,0.8)', 18); }
+          fx.save(); const r = 160 + (f - 15) * 90; const gr = fx.createRadialGradient(CX, top, 0, CX, top, r);
+          gr.addColorStop(0, `rgba(255,255,255,${0.9 * k})`); gr.addColorStop(0.4, `rgba(140,215,255,${0.5 * k})`); gr.addColorStop(1, 'rgba(60,120,255,0)');
+          fx.fillStyle = gr; fx.beginPath(); fx.arc(CX, top, r, 0, 6.283); fx.fill(); fx.restore();
+        }
+        if (f >= 16 && f <= 30) {                               // shockwave ring
+          const u = (f - 16) / 14, r = 300 * gs + u * 900;
+          fx.save(); fx.strokeStyle = `rgba(170,230,255,${(0.75 * (1 - u)).toFixed(3)})`; fx.lineWidth = 18 * (1 - u) + 2; fx.shadowColor = 'rgba(120,200,255,0.8)'; fx.shadowBlur = 30;
+          fx.beginPath(); fx.ellipse(CX, gy, r, r * 0.92, 0, 0, 6.283); fx.stroke(); fx.restore();
+        }
+        // sparks: burst at the strike + slow embers
+        for (let i = 0; i < 90; i++) {
+          const born = i < 50 ? 16 : 20 + hash(i * 3.3) * 30, tt = (f - born) / FPS;
+          if (tt < 0 || tt > 1.3) continue;
+          const a = hash(i * 1.7) * 6.283, sp = (i < 50 ? 700 + hash(i * 2.1) * 900 : 120 + hash(i * 2.1) * 200);
+          const x = CX + Math.cos(a) * sp * tt, y = gy + Math.sin(a) * sp * tt + (i < 50 ? 500 * tt * tt : -160 * tt);
+          const al = clamp(1 - tt / 1.3, 0, 1) * (1 - exitT);
+          fx.fillStyle = i % 3 ? `rgba(255,${200 + (i % 40)},120,${al})` : `rgba(160,235,255,${al})`;
+          fx.beginPath(); fx.arc(x, y, 2 + 3 * hash(i * 4.9), 0, 6.283); fx.fill();
+        }
+        fx.globalCompositeOperation = 'source-over';
+        // flash on the strike, a softer one on the title slam
+        const fl = f >= 16 && f <= 19 ? [0.6, 0.42, 0.22, 0.08][f - 16] : f >= 31 && f <= 33 ? [0.25, 0.12, 0.05][f - 31] : 0;
+        $('flash').style.opacity = fl.toFixed(3);
+      }
+      window.addEventListener('hf-seek', (e) => renderAt(e.detail.time));
+      window.__hf.buildReady.fonts.then(() => renderAt(0));
+    </script>
+  </body>
+</html>

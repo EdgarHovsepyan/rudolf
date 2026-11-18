@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "source": {
+    "path": "/tmp/claude-0/-home-user-rudolf/72604a1f-a30f-524d-a35b-759994d6c323/scratchpad/win/deliver/original_excerpt.mp4",
+    "duration": 2.5,
+    "size": [
+      1568,
+      1000
+    ],
+    "fps": 30.0
+  },
+  "rounds": 1,
+  "shots_estimate": {
+    "answer": 1,
+    "range": [
+      1,
+      1
+    ]
+  },
+  "shots": 1,
+  "cuts": [],
+  "looks": [
+    {
+      "span": [
+        0.0,
+        2.5
+      ],
+      "answer": "code_render",
+      "p": {
+        "code_render": 0.6,
+        "anim_2d": 0.35,
+        "cg_3d": 0.05
+      },
+      "by": ""
+    }
+  ],
+  "busy": [
+    [
+      0.469,
+      0.781
+    ],
+    [
+      0.781,
+      1.094
+    ],
+    [
+      1.094,
+      1.406
+    ],
+    [
+      1.406,
+      1.719
+    ],
+    [
+      1.719,
+      2.031
+    ]
+  ],
+  "rhythm": {
+    "shot_lengths": [
+      2.5
+    ],
+    "mean_shot_s": 2.5,
+    "cuts_per_min": 0.0,
+    "change_step_s": 0.25,
+    "change": [
+      0.04,
+      0.15,
+      0.29,
+      0.18,
+      0.17,
+      0.14,
+      0.3,
+      0.13,
+      0.13,
+      0.15
+    ]
+  },
+  "keyframes": {
+    "1": [
+      {
+        "frame": 0,
+        "role": "first",
+        "by": "tool",
+        "t": 0.0
+      },
+      {
+        "frame": 1,
+        "role": "change",
+        "by": "tool",
+        "t": 0.033
+      },
+      {
+        "frame": 17,
+        "role": "change",
+        "by": "tool",
+        "t": 0.567
+      },
+      {
+        "frame": 32,
+        "role": "change",
+        "by": "tool",
+        "t": 1.067
+      },
+      {
+        "frame": 47,
+        "role": "change",
+        "by": "tool",
+        "t": 1.567
+      },
+      {
+        "frame": 62,
+        "role": "change",
+        "by": "tool",
+        "t": 2.067
+      },
+      {
+        "frame": 72,
+        "role": "change",
+        "by": "tool",
+        "t": 2.4
+      },
+      {
+        "frame": 74,
+        "role": "last",
+        "by": "tool",
+        "t": 2.467
+      }
+    ]
+  }
+}

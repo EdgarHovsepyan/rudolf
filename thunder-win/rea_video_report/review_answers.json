@@ -1,0 +1,269 @@
+{
+ "by": "claude-agent",
+ "shots": [
+  {
+   "id": "shot_001",
+   "time": "0.00-2.50",
+   "label_probs": {
+    "code_render": 0.6,
+    "anim_2d": 0.35,
+    "ai_video": 0.05
+   },
+   "image_source": "graphic",
+   "evidence": [
+    "Slot-game win celebration rendered by the game engine: rigid layered sprites with exact scaling/overshoot easing, additive glow and particle coins, no texture boiling or morphing",
+    "Stream compression noise makes it look photographic to pixel statistics; the shapes themselves stay perfectly stable frame to frame"
+   ],
+   "description": "Win celebration over a dimmed slot board: coins fly in (0.2-0.45 s); a plaque rises from the bottom (0.47-0.53 s); a vertical lightning bolt strikes it from the top with a flash (0.53-0.63 s); the win amount counts up inside the plaque while the background floods with red light (0.63-0.93 s); a large title slams in from oversized to final scale (0.97-1.1 s); hold with crawling electric arcs (1.1-1.5 s); the whole group drops out downward (1.53-1.73 s) and the board returns.",
+   "narrative": {
+    "role": "给结论",
+    "point": "announce a big win"
+   },
+   "embedded_assets": [],
+   "ai_edits": [],
+   "same_clip_as": null,
+   "replication": {
+    "image_prompt": "",
+    "video_prompt": "",
+    "video_prompt_en": ""
+   },
+   "aspects": {
+    "framing": {
+     "shot_size": "",
+     "camera_angle": "",
+     "composition": ""
+    },
+    "camera": {
+     "camera_support": "",
+     "lens": "",
+     "speed": ""
+    },
+    "lighting": {
+     "location": "",
+     "key_light": "",
+     "light_quality": "",
+     "fill_light": "",
+     "rim_light": "",
+     "catchlight": "",
+     "practicals": "",
+     "color_temp": "",
+     "lighting_setup": ""
+    },
+    "grade": {
+     "color_grade": ""
+    }
+   },
+   "performance": {
+    "who": "",
+    "emotion": "",
+    "intensity": "",
+    "face": "",
+    "body": "",
+    "arc": [],
+    "voice": "",
+    "key": false,
+    "move": "",
+    "movers": 0,
+    "full_body": null,
+    "backdrop": "",
+    "en": ""
+   }
+  }
+ ],
+ "aspects": {
+  "camera": {
+   "setups": "",
+   "gear_guess": ""
+  },
+  "lighting": {
+   "lighting_overall": ""
+  },
+  "grade": {
+   "grade_overall": ""
+  },
+  "editing": {
+   "editing": ""
+  },
+  "format": {
+   "format": ""
+  }
+ },
+ "story": {
+  "summary": "A big-win celebration: lightning-charged plaque, counting amount, slammed title, exit.",
+  "hook": "Coins and a lightning strike in the first half second",
+  "highlights": [
+   "Strike + flash at 0.53 s lands the plaque",
+   "Title slam with overshoot at ~1.0 s",
+   "Clean drop-out exit at 1.53 s"
+  ]
+ },
+ "cast": {
+  "style": "glossy 2D game UI motion graphics with additive VFX",
+  "characters": [],
+  "scenes": [
+   {
+    "id": "S1",
+    "where": "slot board",
+    "when": "n/a",
+    "look": "dimmed board, red-lit celebration",
+    "shots": [
+     1
+    ]
+   }
+  ],
+  "props": [
+   {
+    "name": "win plaque",
+    "note": "counts the amount",
+    "shots": [
+     1
+    ]
+   },
+   {
+    "name": "title",
+    "note": "slams in",
+    "shots": [
+     1
+    ]
+   }
+  ]
+ },
+ "packaging": {
+  "stickers": [],
+  "text": [
+   {
+    "id": "text_001",
+    "kind": ""
+   },
+   {
+    "id": "text_002",
+    "kind": ""
+   },
+   {
+    "id": "text_003",
+    "kind": ""
+   },
+   {
+    "id": "text_004",
+    "kind": ""
+   },
+   {
+    "id": "text_005",
+    "kind": ""
+   },
+   {
+    "id": "text_006",
+    "kind": ""
+   },
+   {
+    "id": "text_008",
+    "kind": ""
+   },
+   {
+    "id": "text_007",
+    "kind": ""
+   },
+   {
+    "id": "text_009",
+    "kind": ""
+   },
+   {
+    "id": "text_010",
+    "kind": ""
+   },
+   {
+    "id": "text_011",
+    "kind": ""
+   },
+   {
+    "id": "text_012",
+    "kind": ""
+   },
+   {
+    "id": "text_013",
+    "kind": ""
+   },
+   {
+    "id": "text_014",
+    "kind": ""
+   },
+   {
+    "id": "text_015",
+    "kind": ""
+   },
+   {
+    "id": "text_016",
+    "kind": ""
+   },
+   {
+    "id": "text_017",
+    "kind": ""
+   },
+   {
+    "id": "text_018",
+    "kind": ""
+   },
+   {
+    "id": "text_019",
+    "kind": ""
+   },
+   {
+    "id": "text_020",
+    "kind": ""
+   },
+   {
+    "id": "text_021",
+    "kind": ""
+   },
+   {
+    "id": "text_022",
+    "kind": ""
+   },
+   {
+    "id": "text_023",
+    "kind": ""
+   },
+   {
+    "id": "text_024",
+    "kind": ""
+   },
+   {
+    "id": "text_025",
+    "kind": ""
+   },
+   {
+    "id": "text_026",
+    "kind": ""
+   },
+   {
+    "id": "text_027",
+    "kind": ""
+   },
+   {
+    "id": "text_028",
+    "kind": ""
+   },
+   {
+    "id": "text_029",
+    "kind": ""
+   },
+   {
+    "id": "text_030",
+    "kind": ""
+   },
+   {
+    "id": "text_031",
+    "kind": ""
+   },
+   {
+    "id": "text_032",
+    "kind": ""
+   },
+   {
+    "id": "text_033",
+    "kind": ""
+   }
+  ],
+  "missed": []
+ }
+}

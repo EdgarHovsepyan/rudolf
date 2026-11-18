@@ -1,0 +1,11 @@
+{
+  "shots_estimate": {"answer": 1, "range": [1, 1]},
+  "gaps": {
+    "g01": {"answer": "busy", "p": {"busy": 0.85, "transition": 0.15}},
+    "g02": {"answer": "busy", "p": {"busy": 0.9, "same": 0.1}},
+    "g03": {"answer": "busy", "p": {"busy": 0.8, "same": 0.2}},
+    "g04": {"answer": "busy", "p": {"busy": 0.7, "same": 0.3}},
+    "g05": {"answer": "busy", "p": {"busy": 0.8, "transition": 0.2}}
+  },
+  "source": [{"tiles": "00-07", "answer": "code_render", "p": {"code_render": 0.6, "anim_2d": 0.35, "cg_3d": 0.05}}]
+}

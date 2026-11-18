@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "source": {
+    "path": "/tmp/claude-0/-home-user-rudolf/72604a1f-a30f-524d-a35b-759994d6c323/scratchpad/win/deliver/original_excerpt.mp4",
+    "duration": 2.5,
+    "size": [
+      1568,
+      1000
+    ],
+    "fps": 30.0
+  },
+  "rounds": [
+    [
+      "overview"
+    ]
+  ],
+  "shots_estimate": {
+    "answer": 1,
+    "range": [
+      1,
+      1
+    ]
+  },
+  "source_segments": [
+    {
+      "span": [
+        0.0,
+        2.5
+      ],
+      "answer": "code_render",
+      "p": {
+        "code_render": 0.6,
+        "anim_2d": 0.35,
+        "cg_3d": 0.05
+      },
+      "by": ""
+    }
+  ],
+  "detail": [
+    "shot_001"
+  ],
+  "detail_for": []
+}

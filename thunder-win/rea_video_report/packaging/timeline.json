@@ -1,0 +1,1030 @@
+{
+  "text": [
+    {
+      "id": "text_001",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 1.9,
+      "text": "TUMBLEWIN",
+      "bbox": [
+        0.4445,
+        0.0,
+        0.107,
+        0.0355
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#dfcd3b",
+        "multicolor": true,
+        "highlight_name": "purple",
+        "weight": 0.147
+      },
+      "style_zh": "yellow text, keywords highlighted in purple, line height 3.2% (about 32px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_002",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 1.6,
+      "text": "46.35",
+      "bbox": [
+        0.4664,
+        0.027,
+        0.068,
+        0.0515
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#e6ec57",
+        "weight": 0.098
+      },
+      "style_zh": "yellow text, line height 4.8% (about 48px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_003",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 1.6,
+      "text": "TOAL",
+      "bbox": [
+        0.0445,
+        0.06,
+        0.0602,
+        0.0368
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#e3dc86",
+        "multicolor": true,
+        "highlight_name": "yellow",
+        "weight": 0.127
+      },
+      "style_zh": "yellow text, keywords highlighted in yellow, line height 3.7% (about 37px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_004",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "TOTAL/MULTIPLIER",
+      "bbox": [
+        0.0219,
+        0.06,
+        0.1055,
+        0.0613
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#e4d571",
+        "weight": 0.147
+      },
+      "style_zh": "yellow text, line height 3.2% (about 32px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_005",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "OLYMPUS/SUPERSCATTER",
+      "bbox": [
+        0.8594,
+        0.136,
+        0.132,
+        0.1005
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#f3de48",
+        "stroke_name": "red",
+        "stroke": "#732217",
+        "stroke_ratio": 0.02,
+        "multicolor": true,
+        "highlight_name": "black",
+        "weight": 0.089
+      },
+      "style_zh": "yellow text, red outline, keywords highlighted in black, line height 5.1% (about 51px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_006",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "FREE SPINS/LEFT",
+      "bbox": [
+        0.0242,
+        0.4167,
+        0.1,
+        0.06
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#dcc562",
+        "weight": 0.141
+      },
+      "style_zh": "yellow text, line height 3.3% (about 33px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_008",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.0,
+      "t1": 1.1,
+      "text": "0.40/0.30",
+      "bbox": [
+        0.0992,
+        0.6287,
+        0.0391,
+        0.0833
+      ],
+      "style": {
+        "fill_name": "orange",
+        "fill": "#9c7b4b",
+        "weight": 0.105
+      },
+      "style_zh": "orange text, line height 3.2% (about 32px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_007",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.0,
+      "t1": 1.1,
+      "text": "80",
+      "bbox": [
+        0.0266,
+        0.6238,
+        0.0352,
+        0.0441
+      ],
+      "style": {
+        "fill_name": "black",
+        "fill": "#aa885b",
+        "weight": 0.109
+      },
+      "style_zh": "black text, line height 4.3% (about 43px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "pop_out",
+        "kind_zh": "shrink out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_009",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.0,
+      "t1": 1.1,
+      "text": "100/0.10",
+      "bbox": [
+        0.0188,
+        0.6703,
+        0.1195,
+        0.087
+      ],
+      "style": {
+        "fill_name": "brown",
+        "fill": "#ad2f1a",
+        "multicolor": true,
+        "highlight_name": "black",
+        "weight": 0.127
+      },
+      "style_zh": "brown text, keywords highlighted in black, line height 4.0% (about 40px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_010",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.0,
+      "t1": 0.6,
+      "text": "0.10/0.05",
+      "bbox": [
+        0.0992,
+        0.7206,
+        0.0391,
+        0.0833
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#dec595",
+        "weight": 0.089
+      },
+      "style_zh": "yellow text, line height 3.5% (about 35px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_011",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 0.6,
+      "text": "11A",
+      "bbox": [
+        0.0188,
+        0.8113,
+        0.0438,
+        0.0417
+      ],
+      "style": {
+        "fill_name": "green",
+        "fill": "#66e245",
+        "multicolor": true,
+        "highlight_name": "black",
+        "weight": 0.151
+      },
+      "style_zh": "green text, keywords highlighted in black, line height 4.1% (about 41px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_012",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 1.6,
+      "text": "0.18",
+      "bbox": [
+        0.0992,
+        0.8137,
+        0.0383,
+        0.0355
+      ],
+      "style": {
+        "fill_name": "brown",
+        "fill": "#391b1d",
+        "weight": 0.083
+      },
+      "style_zh": "brown text, line height 3.5% (about 36px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "slide_out",
+        "kind_zh": "slide out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_013",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "WINCA$58.53",
+      "bbox": [
+        0.3875,
+        0.8701,
+        0.2258,
+        0.0723
+      ],
+      "style": {
+        "fill_name": "white",
+        "fill": "#f0eaf4",
+        "weight": 0.146
+      },
+      "style_zh": "white text, line height 6.9% (about 69px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_014",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 2.1,
+      "text": "CREDIT CA$760.64",
+      "bbox": [
+        0.1758,
+        0.8971,
+        0.15,
+        0.0722
+      ],
+      "style": {
+        "fill_name": "white",
+        "fill": "#ece2eb",
+        "stroke_name": "black",
+        "stroke": "#22141b",
+        "stroke_ratio": 0.05,
+        "multicolor": true,
+        "highlight_name": "orange",
+        "weight": 0.152
+      },
+      "style_zh": "white text, black outline, keywords highlighted in orange, line height 3.5% (about 36px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "pop_out",
+        "kind_zh": "shrink out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_015",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "AUTOPLAY",
+      "bbox": [
+        0.7398,
+        0.9645,
+        0.0649,
+        0.0319
+      ],
+      "style": {
+        "fill_name": "grey",
+        "fill": "#5c5b5f",
+        "stroke_name": "black",
+        "stroke": "#040409",
+        "stroke_ratio": 0.073,
+        "weight": 0.11
+      },
+      "style_zh": "grey text, black outline, line height 3.1% (about 31px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_016",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "PRAGMATICPLAY·#134997004711027",
+      "bbox": [
+        0.0008,
+        0.9706,
+        0.2265,
+        0.0282
+      ],
+      "style": {
+        "fill_name": "grey",
+        "fill": "#795a78",
+        "weight": 0.13
+      },
+      "style_zh": "grey text, line height 2.5% (about 24px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_017",
+      "kind": "huazi",
+      "kind_zh": "styled text",
+      "t0": 0.5,
+      "t1": 1.1,
+      "text": "46.35",
+      "bbox": [
+        0.4172,
+        0.3946,
+        0.1719,
+        0.1115
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#fbe47f",
+        "multicolor": true,
+        "highlight_name": "red",
+        "weight": 0.087
+      },
+      "style_zh": "yellow text, keywords highlighted in red, line height 8.2% (about 82px)",
+      "anim_in": {
+        "kind": "fade",
+        "kind_zh": "fade in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_018",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.5,
+      "t1": 1.6,
+      "text": "7",
+      "bbox": [
+        0.0492,
+        0.4412,
+        0.0492,
+        0.0895
+      ],
+      "style": {
+        "fill_name": "white",
+        "fill": "#544621",
+        "weight": 0.156
+      },
+      "style_zh": "white text, line height 5.5% (about 55px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_019",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 0.5,
+      "t1": 2.1,
+      "text": "BET CA$0.20",
+      "bbox": [
+        0.1984,
+        0.9338,
+        0.1063,
+        0.0355
+      ],
+      "style": {
+        "fill_name": "grey",
+        "fill": "#5c535b",
+        "stroke_name": "grey",
+        "stroke": "#53374e",
+        "stroke_ratio": 0.037,
+        "multicolor": true,
+        "highlight_name": "yellow",
+        "weight": 0.132
+      },
+      "style_zh": "grey text, grey outline, keywords highlighted in yellow, line height 3.5% (about 36px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_020",
+      "kind": "huazi",
+      "kind_zh": "styled text",
+      "t0": 1.0,
+      "t1": 1.1,
+      "text": "SENSATIONAL!",
+      "bbox": [
+        0.1328,
+        0.0123,
+        0.7539,
+        0.3137
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#fae53e",
+        "stroke_name": "orange",
+        "stroke": "#b2441f",
+        "stroke_ratio": 0.006,
+        "multicolor": true,
+        "highlight_name": "black",
+        "weight": 0.063
+      },
+      "style_zh": "yellow text, orange outline, keywords highlighted in black, line height 31.4% (about 314px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_021",
+      "kind": "title",
+      "kind_zh": "title",
+      "t0": 0.0,
+      "t1": 2.5,
+      "text": "45x",
+      "bbox": [
+        0.0438,
+        0.1483,
+        0.0688,
+        0.0699
+      ],
+      "style": {
+        "fill_name": "black",
+        "fill": "#190614",
+        "gradient": true,
+        "weight": 0.099
+      },
+      "style_zh": "black text, gradient, line height 6.9% (about 69px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_022",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.0,
+      "t1": 1.6,
+      "text": "0.30",
+      "bbox": [
+        0.0992,
+        0.6752,
+        0.0383,
+        0.0368
+      ],
+      "style": {
+        "fill_name": "brown",
+        "fill": "#533c2c",
+        "weight": 0.15
+      },
+      "style_zh": "brown text, line height 3.4% (about 34px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_023",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 0.6,
+      "t1": 1.4,
+      "text": "90/0.05/0.18",
+      "bbox": [
+        0.0289,
+        0.7218,
+        0.1086,
+        0.1238
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#564917",
+        "weight": 0.076
+      },
+      "style_zh": "yellow text, line height 3.1% (about 31px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_024",
+      "kind": "huazi",
+      "kind_zh": "styled text",
+      "t0": 0.6,
+      "t1": 1.4,
+      "text": "80",
+      "bbox": [
+        0.0289,
+        0.7696,
+        0.0305,
+        0.0319
+      ],
+      "style": {
+        "fill_name": "blue",
+        "fill": "#02273a",
+        "stroke_name": "grey",
+        "stroke": "#354743",
+        "stroke_ratio": 0.09,
+        "weight": 0.179
+      },
+      "style_zh": "blue text, grey outline, line height 3.2% (about 32px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_025",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 1.0,
+      "t1": 1.6,
+      "text": "11A",
+      "bbox": [
+        0.0188,
+        0.8113,
+        0.0438,
+        0.0404
+      ],
+      "style": {
+        "fill_name": "black",
+        "fill": "#1b0f16",
+        "multicolor": true,
+        "highlight_name": "green",
+        "weight": 0.145
+      },
+      "style_zh": "black text, keywords highlighted in green, line height 4.0% (about 40px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_026",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.4,
+      "t1": 2.0,
+      "text": "0.40",
+      "bbox": [
+        0.0992,
+        0.6287,
+        0.0383,
+        0.0355
+      ],
+      "style": {
+        "fill_name": "orange",
+        "fill": "#bfa684",
+        "weight": 0.094
+      },
+      "style_zh": "orange text, line height 3.5% (about 36px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "slide_out",
+        "kind_zh": "slide out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_027",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.5,
+      "t1": 1.6,
+      "text": "8",
+      "bbox": [
+        0.0305,
+        0.6348,
+        0.0133,
+        0.0245
+      ],
+      "style": {
+        "fill_name": "orange",
+        "fill": "#c2a98e",
+        "weight": 0.148
+      },
+      "style_zh": "orange text, line height 2.5% (about 24px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_028",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.5,
+      "t1": 1.6,
+      "text": "10",
+      "bbox": [
+        0.0188,
+        0.674,
+        0.0406,
+        0.038
+      ],
+      "style": {
+        "fill_name": "red",
+        "fill": "#88281d",
+        "weight": 0.201
+      },
+      "style_zh": "red text, bold, line height 3.8% (about 38px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "cut_out",
+        "kind_zh": "hard out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_029",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.3,
+      "t1": 1.9,
+      "text": "0.10",
+      "bbox": [
+        0.0992,
+        0.7206,
+        0.0383,
+        0.0368
+      ],
+      "style": {
+        "fill_name": "orange",
+        "fill": "#b39b7c",
+        "multicolor": true,
+        "highlight_name": "black",
+        "weight": 0.091
+      },
+      "style_zh": "orange text, keywords highlighted in black, line height 3.7% (about 37px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": {
+        "kind": "slide_out",
+        "kind_zh": "slide out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_030",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.4,
+      "t1": 1.8,
+      "text": "0.05",
+      "bbox": [
+        0.0992,
+        0.7684,
+        0.0391,
+        0.0355
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#b6a17a",
+        "weight": 0.094
+      },
+      "style_zh": "yellow text, line height 3.5% (about 36px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_031",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 1.9,
+      "t1": 2.5,
+      "text": "HIT",
+      "bbox": [
+        0.2867,
+        0.0123,
+        0.0523,
+        0.0551
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#d9d17e",
+        "stroke_name": "yellow",
+        "stroke": "#6a5b38",
+        "stroke_ratio": 0.018,
+        "weight": 0.085
+      },
+      "style_zh": "yellow text, yellow outline, line height 5.5% (about 55px)",
+      "anim_in": null,
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_032",
+      "kind": "label",
+      "kind_zh": "text label",
+      "t0": 1.9,
+      "t1": 2.3,
+      "text": "TO MULTIPLY TUMBLE WIN",
+      "bbox": [
+        0.3961,
+        0.0159,
+        0.3156,
+        0.0466
+      ],
+      "style": {
+        "fill_name": "yellow",
+        "fill": "#d2c675",
+        "stroke_name": "black",
+        "stroke": "#362122",
+        "stroke_ratio": 0.032,
+        "multicolor": true,
+        "highlight_name": "purple",
+        "weight": 0.101
+      },
+      "style_zh": "yellow text, black outline, keywords highlighted in purple, line height 4.7% (about 47px)",
+      "anim_in": null,
+      "anim_out": {
+        "kind": "pop_out",
+        "kind_zh": "shrink out"
+      },
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    },
+    {
+      "id": "text_033",
+      "kind": "counter",
+      "kind_zh": "counter",
+      "t0": 1.8,
+      "t1": 2.5,
+      "text": "6",
+      "bbox": [
+        0.0656,
+        0.4755,
+        0.0227,
+        0.0466
+      ],
+      "style": {
+        "fill_name": "blue",
+        "fill": "#6ca0da",
+        "weight": 0.194
+      },
+      "style_zh": "blue text, line height 4.7% (about 47px)",
+      "anim_in": {
+        "kind": "cut",
+        "kind_zh": "hard in"
+      },
+      "anim_out": null,
+      "mid_motion": null,
+      "follows": null,
+      "part_of_picture": false,
+      "anchor": null,
+      "persistent": null
+    }
+  ],
+  "stickers": [],
+  "sfx": []
+}
