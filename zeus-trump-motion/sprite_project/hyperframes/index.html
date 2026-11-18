@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=720, height=1280" />
+    <title>Thunder Hero</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 720px; height: 1280px; overflow: hidden; background: #120a24; }
+      #root { position: relative; width: 100%; height: 100%; }
+      .clip { position: absolute; inset: 0; width: 720px; height: 1280px; display: block; }
+      #bg { z-index: 0; object-fit: cover; }
+      #hero { z-index: 1; }
+      #fx { z-index: 2; }
+      #flash1 { z-index: 3; background: #f2fbff; opacity: 0; }
+      #flash2 { z-index: 3; background: #f2fbff; opacity: 0; }
+    </style>
+    <script src="assets/timeline.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="3" data-fps="30" data-width="720" data-height="1280" data-no-timeline>
+      <video id="bg" class="clip" src="assets/storm_bg.mp4" muted playsinline data-start="0" data-duration="3" data-track-index="0"></video>
+      <canvas id="hero" class="clip" width="720" height="1280" data-start="0" data-duration="3" data-track-index="1"></canvas>
+      <canvas id="fx" class="clip" width="720" height="1280" data-start="0" data-duration="3" data-track-index="2"></canvas>
+      <div id="flash1" class="clip" data-start="0.6667" data-duration="0.2" data-track-index="3"></div>
+      <div id="flash2" class="clip" data-start="2.6333" data-duration="0.2" data-track-index="4"></div>
+    </div>
+    <script>
+      // Sprite performance from the owner's tech-art sheet, placed on the reference beats (assets/timeline.js),
+      // with additive VFX built from the sheet's own effect assets. Every frame is derived from time alone.
+      const N = TL.n, W = TL.W, H = TL.H;
+      const IM = {};
+      const load = (k, src) => new Promise((res, rej) => { const i = new Image(); i.onload = () => { IM[k] = i; res(); }; i.onerror = () => rej(new Error('load ' + src)); i.src = src; });
+      const names = [...new Set(TL.frames.map((f) => f.img))];
+      const fxNames = ['fx_01', 'fx_02', 'fx_03', 'fx_04', 'fx_05', 'fx_07', 'fx_08'];
+      window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
+      const ready = Promise.all([...names.map((n) => load(n, 'assets/sprites/' + n)), ...fxNames.map((n) => load(n, 'assets/fx/' + n + '.png'))])
+        .then(() => Promise.all(Object.values(IM).map((i) => (i.decode ? i.decode() : null))));
+      window.__hf.buildReady.sprites = ready;
+
+      const hero = document.getElementById('hero').getContext('2d');
+      const fx = document.getElementById('fx').getContext('2d');
+      const hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
+      const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+      const STRIKE = { 15: .5, 16: .8, 17: 1, 18: .7, 19: .45, 76: .5, 77: .8, 78: 1, 79: .7, 80: .45 };
+      const BLOOM = (f) => (f >= 20 && f <= 25 ? [1, .95, .85, .7, .5, .3][f - 20] : f >= 79 && f <= 84 ? [.8, 1, .9, .7, .5, .3][f - 79] : 0);
+      const charge = (f) => (f < 30 ? 0 : f < 46 ? (f - 30) / 16 : f <= 75 ? 1 : f <= 80 ? 1 - (f - 75) / 6 : 0);
+
+      function camera(f) {
+        // slow push-in plus a short shake on each strike
+        const z = 1 + 0.045 * (f / (N - 1));
+        const sh = (STRIKE[f] || 0) * 7;
+        return { z, cx: 360, cy: 760, dx: (hash(f * 3.1) - 0.5) * sh, dy: (hash(f * 7.7) - 0.5) * sh };
+      }
+      function applyCam(ctx, c) { ctx.translate(c.cx + c.dx, c.cy + c.dy); ctx.scale(c.z, c.z); ctx.translate(-c.cx, -c.cy); }
+      function drawFx(name, x, y, scale, rot, alpha, flipX) {
+        const im = IM[name]; if (!im || alpha <= 0) return;
+        fx.save(); fx.globalAlpha = clamp(alpha, 0, 1); fx.translate(x, y); fx.rotate(rot); fx.scale(scale * (flipX ? -1 : 1), scale);
+        fx.drawImage(im, -im.width / 2, -im.height / 2); fx.restore();
+      }
+
+      function renderAt(t) {
+        const f = clamp(Math.round(t * 30), 0, N - 1), fr = TL.frames[f], cam = camera(f);
+        const flash = Math.max(STRIKE[f] || 0, BLOOM(f));
+        // ---------- hero ----------
+        hero.setTransform(1, 0, 0, 1, 0, 0); hero.clearRect(0, 0, W, H);
+        hero.save(); applyCam(hero, cam);
+        const im = IM[fr.img];
+        if (im) {
+          const breathe = 1 + 0.006 * Math.sin((2 * Math.PI * f) / 45);
+          const hipX = fr.tx + 0, hipY = fr.ty;
+          hero.save();
+          hero.translate(fr.tx, fr.ty); hero.scale(fr.s, fr.s * breathe);
+          // warm rim glow from the alpha edge, cooler and stronger while the orb is charged / on strikes
+          const c = charge(f);
+          hero.shadowColor = `rgba(${Math.round(255 - 90 * c)},${Math.round(200 + 30 * c)},${Math.round(120 + 135 * c)},${0.45 + 0.35 * Math.max(c, flash)})`;
+          hero.shadowBlur = 26 + 30 * flash;
+          hero.drawImage(im, 0, 0);
+          hero.shadowBlur = 0;
+          if (flash > 0) {   // lightning lights the whole figure
+            hero.globalCompositeOperation = 'lighter'; hero.globalAlpha = 0.55 * flash;
+            hero.filter = 'brightness(1.3) saturate(0.6)'; hero.drawImage(im, 0, 0); hero.filter = 'none';
+            hero.globalCompositeOperation = 'source-over'; hero.globalAlpha = 1;
+          }
+          hero.restore();
+        }
+        hero.restore();
+
+        // ---------- additive VFX ----------
+        fx.setTransform(1, 0, 0, 1, 0, 0); fx.clearRect(0, 0, W, H);
+        fx.save(); applyCam(fx, cam); fx.globalCompositeOperation = 'lighter';
+        const [hx, hy] = fr.hand, [cx, cy] = fr.chest;
+        // sky strikes onto the hero (sheet bolt asset turned vertical), frames 15-19 and 76-80
+        if (STRIKE[f]) {
+          // fx_03 runs lower-left -> upper-right (-45deg); rotate -45deg more so it falls straight down onto the head
+          const head = [cx + 6, fr.top + 30], len = head[1] + 60;
+          for (let k = 0; k < 1; k++) {
+            const sc = (len / 610) * (k ? 0.85 : 1.1);
+            drawFx(k ? 'fx_02' : 'fx_03', head[0] + (k ? 34 : 0) + (hash(f * 3 + k) - .5) * 24, head[1] - len / 2, sc, -Math.PI / 4 + (k ? 0.12 : -0.04), STRIKE[f] * (k ? .55 : 1), (f + k) % 2 === 1);
+          }
+          drawFx('fx_05', head[0], head[1] - 70, 0.45 + 0.3 * STRIKE[f], f * 0.3, STRIKE[f] * 0.9);
+        }
+        // charge: orb + rotating ring + crackles at the raised hand
+        const c = charge(f);
+        if (c > 0 && f < 76) {
+          const pulse = 0.85 + 0.15 * Math.sin(f * 0.9) + 0.08 * (hash(f) - .5);
+          drawFx('fx_04', hx, hy, 0.55 * c * pulse, 0, 0.75 * c);
+          drawFx('fx_01', hx, hy, 0.62 * c * (1 + 0.05 * Math.sin(f * .5)), f * 0.21, 0.85 * c);
+          drawFx('fx_05', hx, hy, 0.45 * c * pulse, f * 0.13, 0.6 * c);
+          if (f % 2 === 0 || hash(f * 5.3) > .6) {
+            for (let k = 0; k < 2; k++) drawFx('fx_02', hx + (hash(f * 9 + k) - .5) * 120, hy + (hash(f * 4 + k) - .5) * 120, 0.32 + 0.2 * hash(f + k * 7), hash(f * 2 + k) * 6.28, 0.8 * c, hash(f + k) > .5);
+          }
+          // golden swirl around the body
+          drawFx('fx_07', cx, cy + 90, 1.25 * (0.9 + 0.1 * Math.sin(f * .3)), Math.sin(f * 0.11) * 0.08, 0.32 * c, f % 24 < 12);
+        }
+        // cast beam: frames 78-84, from the casting hand out of frame
+        if (f >= 78 && f <= 84) {
+          const k = [0.6, 1, 1, .9, .8, .6, .4][f - 78];
+          const ang = Math.atan2(hy - (cy - 40), hx - cx);           // along the arm
+          const bx = hx + Math.cos(ang) * 330, by = hy + Math.sin(ang) * 330;
+          drawFx('fx_03', bx, by, 1.6, ang + Math.PI * 1.25, k, f % 2 === 1);
+          drawFx('fx_05', hx, hy, 1.1 * k, f * .4, k);
+        }
+        // bloom
+        const b = BLOOM(f);
+        if (b > 0) drawFx('fx_08', cx, cy - 40, 2.6 + 1.2 * b, f * 0.05, b);
+        // embers / sparks drifting up
+        for (let i = 0; i < 46; i++) {
+          const life = 60 + hash(i) * 50, ph = (f + hash(i * 3.7) * life) % life, u = ph / life;
+          const x = 60 + hash(i * 1.9) * 600 + Math.sin(u * 6 + i) * 18, y = 1260 - u * (900 + 300 * hash(i * 5.1));
+          const r = 1.2 + 2.6 * hash(i * 2.3), a = Math.sin(Math.PI * u) * (0.5 + 0.5 * Math.max(c, flash));
+          fx.fillStyle = i % 3 ? `rgba(255,${190 + (i % 50)},110,${a})` : `rgba(150,230,255,${a})`;
+          fx.beginPath(); fx.arc(x, y, r, 0, 6.283); fx.fill();
+        }
+        fx.restore();
+        // white flashes on the reference bloom frames (timed clips)
+        document.getElementById('flash1').style.opacity = f >= 20 && f <= 25 ? (0.55 * b).toFixed(3) : 0;
+        document.getElementById('flash2').style.opacity = f >= 79 && f <= 84 ? (0.5 * b).toFixed(3) : 0;
+      }
+      window.addEventListener('hf-seek', (e) => { renderAt(e.detail.time); });
+      ready.then(() => renderAt(0));
+    </script>
+  </body>
+</html>
